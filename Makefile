@@ -90,6 +90,24 @@ ON_DEVICE_SDK_PATH   := $(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/SDKs/iPhoneOS.sdk
 BARE_PLATFORM        := iPhoneOS
 export IPHONEOS_DEPLOYMENT_TARGET
 
+else ifeq ($(MEMO_TARGET),iphonesimulator-amd64)
+ifneq ($(MEMO_QUIET),1)
+$(warning Building for iOS Simulator amd64)
+endif # ($(MEMO_QUIET),1)
+MEMO_ARCH            := x86_64
+PLATFORM             := iphonesimulator
+DEB_ARCH             := iphonesimulator-amd64
+GNU_HOST_TRIPLE      := x86_64-apple-darwin
+PLATFORM_VERSION_MIN := -miphonesimulator-version-min=$(IPHONEOS_DEPLOYMENT_TARGET)
+RUST_TARGET          := x86_64-apple-ios-sim
+MEMO_PREFIX          ?=
+MEMO_SUB_PREFIX      ?= /usr
+MEMO_ALT_PREFIX      ?= /local
+GNU_PREFIX           :=
+ON_DEVICE_SDK_PATH   := $(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/SDKs/iPhoneSimulator.sdk
+BARE_PLATFORM        := iPhoneSimulator
+export IPHONEOS_DEPLOYMENT_TARGET
+
 else ifeq ($(MEMO_TARGET),appletvos-arm64)
 ifneq ($(MEMO_QUIET),1)
 $(warning Building for tvOS)
