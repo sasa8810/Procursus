@@ -2,6 +2,7 @@ ifneq ($(PROCURSUS),1)
 $(error Use the main Makefile)
 endif
 
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 ifneq (,$(findstring arm64,$(MEMO_TARGET)))
 
 STRAPPROJECTS      += dimentio
@@ -92,4 +93,5 @@ dimentio-package: dimentio-stage
 
 .PHONY: dimentio dimentio-package
 
+endif
 endif
