@@ -2,7 +2,7 @@ ifneq ($(PROCURSUS),1)
 $(error Use the main Makefile)
 endif
 
-SUBPROJECTS   += unrar-free
+SUBPROJECTS        += unrar-free
 UNRAR_FREE_VERSION := 0.1.1
 DEB_UNRAR_FREE_V   ?= $(UNRAR_FREE_VERSION)
 
