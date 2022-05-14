@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    remove|upgrade|deconfigure)
+        update-alternatives --remove unrar @MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/unrar-free
+    ;;
+    
+    failed-upgrade)
+    ;;
+    
+    *)
+      echo "postinst called with unknown argument \$1'" >&2
+      exit 0
+    ;;
+esac
+
+
+
+exit 0
