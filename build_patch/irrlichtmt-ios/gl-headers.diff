@@ -1,0 +1,25 @@
+diff -urN b/source/Irrlicht/COGLES2Common.h c/source/Irrlicht/COGLES2Common.h
+--- b/source/Irrlicht/COGLES2Common.h	2022-05-06 20:08:45.000000000 +0800
++++ c/source/Irrlicht/COGLES2Common.h	2022-05-14 16:39:02.000000000 +0800
+@@ -8,7 +8,7 @@
+ #include "IrrCompileConfig.h"
+ 
+ #ifdef _IRR_COMPILE_WITH_OGLES2_
+-
++#if 0
+ #if defined(_IRR_COMPILE_WITH_IOS_DEVICE_)
+ #include <OpenGLES/ES2/gl.h>
+ #include <OpenGLES/ES2/glext.h>
+@@ -32,7 +32,11 @@
+ #include <GLES2/gl2ext.h>
+ #endif
+ #endif
+-
++#endif
++typedef char GLchar;
++#include <GL/gl.h>
++#include <GL/glext.h>
++#include <GL/glcorearb.h>
+ #ifndef GL_BGRA
+ #define GL_BGRA 0x80E1;
+ #endif

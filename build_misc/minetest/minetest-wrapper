@@ -1,0 +1,3 @@
+#!/bin/sh
+exec @MEMO_PREFIX@/Applications/minetest.app/Contents/MacOS/minetest;
+exit -1;

@@ -1,0 +1,14 @@
+Package: minetest
+Version: @DEB_MINETEST_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libirrlichtmt1.9, libzstd1, libvorbis0a (>= 1.2.0), libvorbisfile3 (>= 1.2.0), libogg0, libluajit-5.1-2 (>= 2.0.4), libfreetype6 (>= 2.2.1), libgmp10 (>= 6.2.1), libgl1-mesa-glx, libcurl4, libncursesw6 (>= 6), minetest-data (= @DEB_MINETEST_V@)
+Section: Games
+Suggests: minetest-mod-moreores, minetest-mod-pipeworks, minetest-server, minetestmapper
+Priority: optional
+Homepage: https://www.minetest.net/
+Description: Multiplayer infinite-world block sandbox
+ Minetest is a minecraft-inspired game written from scratch 
+ and licensed under the LGPL (version 2.1 or later). It supports
+ both survival and creative modes along with multiplayer support,
+ dynamic lighting, and an "infinite" map generator.

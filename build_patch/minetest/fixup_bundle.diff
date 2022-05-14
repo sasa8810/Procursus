@@ -1,0 +1,12 @@
+diff -urN a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2022-01-31 05:58:18.000000000 +0800
++++ b/src/CMakeLists.txt	2022-05-14 18:43:34.000000000 +0800
+@@ -873,7 +873,7 @@
+ 		install(CODE "
+ 			set(BU_CHMOD_BUNDLE_ITEMS ON)
+ 			include(BundleUtilities)
+-			fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/${BUNDLE_PATH}\" \"\" \"\${CMAKE_INSTALL_PREFIX}/${BINDIR}\")
++			fixup_bundle(\"\@PROCURSUS_DESTDIR@${CMAKE_INSTALL_PREFIX}/${BUNDLE_PATH}\" \"\" \"\@PROCURSUS_DESTDIR@${CMAKE_INSTALL_PREFIX}/${BINDIR}\")
+ 		" COMPONENT Runtime)
+ 	endif()
+ 

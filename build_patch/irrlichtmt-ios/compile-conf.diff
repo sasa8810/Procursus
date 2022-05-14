@@ -1,0 +1,20 @@
+diff -urN a/include/IrrCompileConfig.h b/include/IrrCompileConfig.h
+--- a/include/IrrCompileConfig.h	2022-05-06 20:08:45.000000000 +0800
++++ b/include/IrrCompileConfig.h	2022-05-14 22:35:02.000000000 +0800
+@@ -47,7 +47,7 @@
+ //! Example: NO_IRR_COMPILE_WITH_X11_ would disable X11
+ 
+ //! Uncomment this line to compile with the SDL device
+-//#define _IRR_COMPILE_WITH_SDL_DEVICE_
++#define _IRR_COMPILE_WITH_SDL_DEVICE_
+ #ifdef NO_IRR_COMPILE_WITH_SDL_DEVICE_
+ #undef _IRR_COMPILE_WITH_SDL_DEVICE_
+ #endif
+@@ -486,6 +486,6 @@
+ 		#undef _IRR_SCENEMANAGER_DEBUG
+ 	#endif
+ #endif
+-
++#define _IRR_COMPILE_WITH_X11_DEVICE_
+ #endif // __IRR_COMPILE_CONFIG_H_INCLUDED__
+ 

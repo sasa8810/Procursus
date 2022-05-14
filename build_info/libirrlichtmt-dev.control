@@ -1,0 +1,19 @@
+Package: libirrlichtmt-dev
+Version: @DEB_IRRLITCHTMT_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libirrlichtmt1.9 (= @DEB_IRRLITCHTMT_V@)
+Section: Development
+Priority: optional
+Homepage: https://github.com/minetest/irrlicht
+Description: Minetest's fork of Irrlicht (development files)
+ The Irrlicht Engine is an open source completely cross-platform
+ 3D engine. It has support for OpenGL and its own software renderer,
+ and has all of the state-of-the-art features which can be found in
+ commercial 3d engines.
+ .
+ This is a fork by the Minetest developers that contains features,
+ customizations and fixes specifically for use in Minetest.
+ .
+ This package contains the files required to develop applications
+ using the libIrrlichtMt library.

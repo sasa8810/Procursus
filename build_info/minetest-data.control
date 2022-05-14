@@ -1,0 +1,15 @@
+Package: minetest-data
+Version: @DEB_MINETEST_V@
+Architecture: all
+Maintainer: @DEB_MAINTAINER@
+Section: Games
+Priority: optional
+Homepage: https://www.minetest.net/
+Description: Multiplayer infinite-world block sandbox (data files)
+ Minetest is a minecraft-inspired game written from scratch and licensed
+ under the LGPL (version 2.1 or later). It supports both survival and
+ creative modes along with multiplayer support, dynamic lighting, and an
+ "infinite" map generator.
+ .
+ These are the files used by both client and server packages, such as the
+ textures and other graphical files and the standard mods.
