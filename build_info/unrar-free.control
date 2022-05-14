@@ -1,0 +1,15 @@
+Package: unrar-free
+Version: @DEB_UNRAR_FREE_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Author: Bastian Germann <bastiangermann@fishpost.de>
+Depends: libintl8
+Section: Archiving
+Priority: optional
+Homepage: https://gitlab.com/bgermann/unrar-free
+Description: Unarchiver for .rar files
+ unrar-free is a free software version of the non-free unrar utility.
+ This program is a simple command-line front-end to libarchive, and can list
+ and extract RAR archives but also other formats supported by libarchive.
+ It does not rival the non-free unrar in terms of features, but
+ special care has been taken to ensure it meets most user's needs.
