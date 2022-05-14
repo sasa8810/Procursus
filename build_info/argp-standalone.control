@@ -1,0 +1,9 @@
+Package: argp-standalone
+Version: @DEB_ARGP_STANDALONE_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libintl-dev
+Section: Development
+Priority: optional
+Homepage: https://github.com/ericonr/argp-standalone
+Description: Hierarchial argument parsing library broken out from glibc
