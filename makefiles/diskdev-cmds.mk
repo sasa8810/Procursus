@@ -13,6 +13,13 @@ DEB_DISKDEV-CMDS_V   ?= $(DISKDEV-CMDS_VERSION)
 diskdev-cmds-setup: setup
 	wget -q -nc -P $(BUILD_SOURCE) https://opensource.apple.com/tarballs/diskdev_cmds/diskdev_cmds-$(DISKDEV-CMDS_VERSION).tar.gz
 	$(call EXTRACT_TAR,diskdev_cmds-$(DISKDEV-CMDS_VERSION).tar.gz,diskdev_cmds-$(DISKDEV-CMDS_VERSION),diskdev-cmds)
+ifeq ($(shell [ "$(CFVER_WHOLE)" -lt 1300 ] && echo 1),1)
+	sed -i -e 's+#include <sys/mount.h>+#include <sys/mount.h>\n#ifndef MNT_STRICTATIME\n#define MNT_STRICTATIME 0x80\n#endif+g' $(BUILD_WORK)/diskdev-cmds/mount_flags_dir/mount_flags.c
+ifeq (,$(findstring darwin,$(MEMO_TARGET)))
+	sed -i 's/TARGET_OS_IPHONE/1/g' $(BUILD_WORK)/diskdev-cmds/edt_fstab/edt_fstab.h
+	sed -i 's/TARGET_OS_SIMULATOR/0/g' $(BUILD_WORK)/diskdev-cmds/edt_fstab/edt_fstab.h
+endif
+endif
 	sed -i -e '/#include <TargetConditionals.h>/d' \
 		$(BUILD_WORK)/diskdev-cmds/edt_fstab/edt_fstab.h \
 		$(BUILD_WORK)/diskdev-cmds/fsck.tproj/fsck.c
@@ -21,25 +28,6 @@ diskdev-cmds-setup: setup
 	sed -i -e '/TARGET_OS_OSX/d' \
 		$(BUILD_WORK)/diskdev-cmds/disklib/preen.c
 	mkdir -p $(BUILD_STAGE)/diskdev-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/{{s,}bin,libexec,share/man/man{1,5,8}}
-
-	# Mess of copying over headers because some build_base headers interfere with the build of Apple cmds.
-	mkdir -p $(BUILD_WORK)/diskdev-cmds/include/{arm,machine,{System/,}sys,uuid}
-	cp -a $(MACOSX_SYSROOT)/usr/include/sys/{disk,reboot,vnioctl,vmmeter}.h $(MACOSX_SYSROOT)/System/Library/Frameworks/Kernel.framework/Versions/Current/Headers/sys/disklabel.h $(BUILD_WORK)/diskdev-cmds/include/sys
-	cp -a $(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/{unistd,stdlib}.h $(BUILD_WORK)/diskdev-cmds/include
-
-	wget -q -nc -P $(BUILD_WORK)/diskdev-cmds/include \
-		https://opensource.apple.com/source/libutil/libutil-57/mntopts.h \
-		https://opensource.apple.com/source/xnu/xnu-6153.11.26/EXTERNAL_HEADERS/mach-o/nlist.h
-	wget -q -nc -P $(BUILD_WORK)/diskdev-cmds/include/arm \
-		https://opensource.apple.com/source/xnu/xnu-6153.11.26/bsd/arm/disklabel.h
-	wget -q -nc -P $(BUILD_WORK)/diskdev-cmds/include/machine \
-		https://opensource.apple.com/source/xnu/xnu-6153.11.26/bsd/machine/disklabel.h
-	wget -q -nc -P $(BUILD_WORK)/diskdev-cmds/include/sys \
-		https://opensource.apple.com/source/xnu/xnu-6153.11.26/bsd/sys/vnode.h
-	wget -q -nc -P $(BUILD_WORK)/diskdev-cmds/include/System/sys \
-		https://opensource.apple.com/source/xnu/xnu-6153.11.26/bsd/sys/fsctl.h
-	wget -q -nc -P $(BUILD_WORK)/diskdev-cmds/include/System/uuid \
-		https://opensource.apple.com/source/Libc/Libc-1353.11.2/uuid/namespace.h
 
 ifneq ($(wildcard $(BUILD_WORK)/diskdev-cmds/.build_complete),)
 diskdev-cmds:
@@ -90,7 +78,7 @@ diskdev-cmds: diskdev-cmds-setup
 	cp -a !(setclass).tproj/*.8 $(BUILD_STAGE)/diskdev-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man8
 ifeq ($(shell [ "$(CFVER_WHOLE)" -ge 1600 ] && echo 1),1)
 ifeq (,$(findstring ramdisk,$(MEMO_TARGET)))
-		rm -f $(BUILD_STAGE)/diskdev-cmds/$(MEMO_PREFIX)/sbin/umount
+		rm -f $(BUILD_STAGE)/diskdev-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/sbin/umount
 endif
 endif
 	$(call AFTER_BUILD)
@@ -110,7 +98,7 @@ diskdev-cmds-package: diskdev-cmds-stage
 	$(FAKEROOT) chmod u+s $(BUILD_DIST)/diskdev-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/quota
 ifneq ($(shell [ "$(CFVER_WHOLE)" -ge 1600 ] && echo 1),1)
 ifneq (,$(findstring ramdisk,$(MEMO_TARGET)))
-		$(FAKEROOT) chmod u+s $(BUILD_DIST)/diskdev-cmds/sbin/umount
+		$(FAKEROOT) chmod u+s $(BUILD_DIST)/diskdev-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/sbin/umount
 endif
 endif
 
