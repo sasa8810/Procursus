@@ -20,7 +20,7 @@ libprotobuf: libprotobuf-setup
 		$(DEFAULT_CONFIGURE_FLAGS)
 	+$(MAKE) -C $(BUILD_WORK)/libprotobuf
 	+$(MAKE) -C $(BUILD_WORK)/libprotobuf install \
-		DESTDIR="$(BUILD_BASE)"
+		DESTDIR="$(BUILD_STAGE)/libprotobuf"
 	$(call AFTER_BUILD,copy)
 endif
 
