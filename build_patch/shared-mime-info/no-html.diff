@@ -1,0 +1,36 @@
+diff -urN a/data/freedesktop_generate.sh b/data/freedesktop_generate.sh
+--- a/data/freedesktop_generate.sh	2021-01-01 03:12:16.000000000 +0800
++++ b/data/freedesktop_generate.sh	2022-06-10 14:30:42.770878446 +0800
+@@ -9,4 +9,4 @@
+     --its "${src_root}/data/its/shared-mime-info.its" \
+     --join "${src_root}/data/freedesktop.org.xml.in" \
+     -o "${build_root}/data/freedesktop.org.xml" \
+-    "${build_root}/po/"*".gmo"
++    @AAAAAAAAAAAAAAAAAA@
+diff -urN a/data/meson.build b/data/meson.build
+--- a/data/meson.build	2021-01-01 03:12:16.000000000 +0800
++++ b/data/meson.build	2022-06-10 13:51:14.587302621 +0800
+@@ -21,15 +21,3 @@
+   [ 'its/shared-mime-info.loc', 'its/shared-mime-info.its', ],
+   install_dir : get_option('datadir') / 'gettext/its'
+ )
+-
+-custom_target('shared-mime-info-spec-html',
+-    input : 'shared-mime-info-spec.xml',
+-    output: 'shared-mime-info-spec-html',
+-    command: [
+-        xmlto,
+-        '-o', '@OUTPUT@',
+-        'html-nochunks',
+-        '@INPUT@',
+-    ],
+-    build_by_default: true,
+-)
+diff -urN a/tests/meson.build b/tests/meson.build
+--- a/tests/meson.build	2021-01-01 03:12:16.000000000 +0800
++++ b/tests/meson.build	2022-06-10 13:51:13.362697541 +0800
+@@ -68,3 +68,4 @@
+      xmllint,
+      args: [ '--noout', '--relaxng', its20_elements_rng, shared_mime_info_its, ],
+ )
++
