@@ -2,17 +2,18 @@ ifneq ($(PROCURSUS),1)
 $(error Use the main Makefile)
 endif
 
-SUBPROJECTS    += librsvg
-LIBRSVG_VERSION := 2.52.1
+SUBPROJECTS     += librsvg
+LIBRSVG_VERSION := 2.54.3
 DEB_LIBRSVG_V   ?= $(LIBRSVG_VERSION)
 
 librsvg-setup: setup
 	wget -q -nc -P $(BUILD_SOURCE) https://download.gnome.org/sources/librsvg/$(shell echo $(LIBRSVG_VERSION) | cut -f-2 -d.)/librsvg-$(LIBRSVG_VERSION).tar.xz
 	$(call EXTRACT_TAR,librsvg-$(LIBRSVG_VERSION).tar.xz,librsvg-$(LIBRSVG_VERSION),librsvg)
-	$(call DO_PATCH,librsvg,librsvg,-p1)
+	#$(call DO_PATCH,librsvg,librsvg,-p1)
 	sed -i "s|\PKG_CONFIG='\$$(PKG_CONFIG)'|$(DEFAULT_RUST_FLAGS) RUSTFLAGS='-L $(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib'|g" $(BUILD_WORK)/librsvg/Makefile.am
 	sed -i 's|cairo-rs = { version="0.14.0"|cairo-rs = { version="0.14.9"|g' $(BUILD_WORK)/librsvg/Cargo.toml
 	sed -i "s|-framework Foundation|-framework Foundation -framework Security|g" $(BUILD_WORK)/librsvg/Makefile.am
+	#sed -i "s|lse.o|lse_cas1_acq.o|g" $(BUILD_WORK)/librsvg/Makefile.am
 
 ifneq ($(wildcard $(BUILD_WORK)/librsvg/.build_complete),)
 librsvg:
@@ -20,7 +21,7 @@ librsvg:
 else
 librsvg: librsvg-setup glib2.0 gettext cairo gdk-pixbuf pango
 	cd $(BUILD_WORK)/librsvg && cargo vendor
-	cd $(BUILD_WORK)/librsvg && ./configure -C \
+	cd $(BUILD_WORK)/librsvg && autoreconf -fi && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--disable-Bsymbolic \
 		--enable-introspection=no \
