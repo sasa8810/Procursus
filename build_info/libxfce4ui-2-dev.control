@@ -1,0 +1,13 @@
+Package: libxfce4ui-2-dev
+Version: @DEB_LIBXFCE4UI_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgtk-3-dev, libxfce4ui-2-0 (= @DEB_LIBXFCE4UI_V@), libxfce4util-dev, libxfconf-0-dev
+Section: Development
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/libxfce4ui/start
+Description: Development files for libxfce4ui - Gtk+3 variant
+ This package contains the headers and the static library
+ for libxfce4ui.
+ .
+ This package provides development files for the Gtk+3 variant of libxfce4ui.
