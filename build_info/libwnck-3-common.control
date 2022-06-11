@@ -1,0 +1,11 @@
+Package: libwnck-3-common
+Version: @DEB_LIBWNCK_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Section: Libraries
+Priority: optional
+Homepage: https://gitlab.gnome.org/GNOME/libwnck
+Description: Window Navigator Construction Kit - common files
+ A library to use for writing pagers and task lists.
+ .
+ This package contains internationalization files.

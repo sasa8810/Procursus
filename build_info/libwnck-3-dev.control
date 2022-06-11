@@ -1,0 +1,12 @@
+Package: libwnck-3-dev
+Version: @DEB_LIBWNCK_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libglib2.0-0 (>= 2.34), libgtk-3-0 (>= 3.22.0), libwnck-3-0 (= @DEB_LIBWNCK_V@), libx11-6, libglib2.0-dev (>= 2.32), libpango1.0-dev, libx11-dev, libgtk-3-dev (>= 3.4), libcairo2-dev, libxres-dev
+Section: Development
+Priority: optional
+Homepage: https://gitlab.gnome.org/GNOME/libwnck
+Description: Window Navigator Construction Kit - development files
+ A library to use for writing pagers and task lists.
+ .
+ This package contains development files (include headers).
