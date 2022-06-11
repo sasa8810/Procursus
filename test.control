@@ -1,0 +1,9 @@
+Package: @pkg@
+Version: @DEB_@PKG@_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends:
+Section: 
+Priority:
+Homepage:
+Description:

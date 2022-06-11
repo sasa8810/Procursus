@@ -1,0 +1,15 @@
+Package: libgail-3-0
+Version: @DEB_GTK+3_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: at-spi2-core, libatk1.0-0 (>= 2.35.1), libglib2.0-0 (>= 2.57.2), libgtk-3-0 (= 3.24.24-4+deb11u2), libpango-1.0-0 (>= 1.41.0)
+Section: Libraries
+Priority: optional
+Homepage: https://www.gtk.org
+Description: GNOME Accessibility Implementation Library -- shared libraries
+ Gail implements ATK interfaces for GTK widgets which are dynamically
+ loadable at runtime by a GTK application. Once loaded, those parts of
+ an application that use standard GTK widgets will have a basic level
+ of accessibility, without the need to modify the application at all.
+ .
+ This package contains the shared library.

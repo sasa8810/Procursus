@@ -1,0 +1,15 @@
+Package: gtk-update-icon-cache
+Version: @DEB_GTK+3_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgdk-pixbuf-2.0-0 (>= 2.40.0), libglib2.0-0 (>= 2.57.2)
+Section: Miscellaneous
+Priority: optional
+Homepage: https://www.gtk.org/
+Description: icon theme caching utility
+ gtk-update-icon-cache creates mmap()able cache files for icon themes.
+ .
+ GTK can use the cache files created by gtk-update-icon-cache to avoid a lot
+ of system call and disk seek overhead when the application starts. Since the
+ format of the cache files allows them to be mmap()ed shared between multiple
+ applications, the overall memory consumption is reduced as well.

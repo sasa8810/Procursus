@@ -1,0 +1,11 @@
+Package: libxfce4util-bin
+Maintainer: @DEB_MAINTAINER@
+Architecture: @DEB_ARCH@
+Version: @DEB_LIBXFCE4UTIL_V@
+Depends: libxfce4util7 (>= 4.9.0)
+Section: XFCE
+Priority: optional
+Description: tools for libxfce4util
+ This package contains binaries used by Xfce basic utility library.
+ At the moment, the following programs are included:
+  - xfce4-kiosk-query: query Xfce kiosk capabilities.

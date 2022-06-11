@@ -1,0 +1,15 @@
+Package: libxfce4util-dev
+Maintainer: @DEB_MAINTAINER@
+Architecture: @DEB_ARCH@
+Version: @DEB_LIBXFCE4UTIL_V@
+Depends: libglib2.0-dev, libxfce4util7 (= @DEB_LIBXFCE4UTIL_V@)
+Section: XFCE
+Suggests: devhelp
+Priority: optional
+Description: Development files for libxfce4util7
+ This package contains the headers for libxfce4util7. If you intend to code
+ applications for the Xfce4 desktop environment, you need to install this
+ package.
+ .
+ The libxfce4util7 Reference Manual is also included and
+ it can be consulted using Devhelp or a web browser.

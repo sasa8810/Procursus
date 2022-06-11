@@ -1,0 +1,9 @@
+Package: libxfce4util-common
+Maintainer: @DEB_MAINTAINER@
+Architecture: all
+Version: @DEB_LIBXFCE4UTIL_V@
+Section: XFCE
+Priority: optional
+Description: common files for libxfce4util
+ This package contains various infrastructure-independant common files for
+ libxfce4util, the Xfce utility library.

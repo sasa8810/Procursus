@@ -1,0 +1,12 @@
+Package: xfce4-dev-tools
+Version: @DEB_XFCE-DEV-TOOLS_V@
+Priority: optional
+Section: xfce
+Maintainer: @DEB_MAINTAINER@
+Architecture: @DEB_ARCH@
+Depends: libglib2.0-0 (>= 2.12.0), libintl8
+Recommends: autoconf, automake, intltool, libtool
+Homepage: https://docs.xfce.org/xfce/xfce4-dev-tools/start
+Description: Script to help building Xfce from git
+ xfce4-dev-tools provide an easy way to handle the setup and maintenance of a
+ projects build framework. It's required to build Xfce applications from git.

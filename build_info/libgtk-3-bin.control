@@ -1,0 +1,16 @@
+Package: libgtk-3-bin
+Version: @DEB_GTK+3_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: gtk-update-icon-cache, libcairo2 (>= 1.14.0), libgdk-pixbuf-2.0-0 (>= 2.40.0), libglib2.0-0 (>= 2.57.2), libgtk-3-0 (>= @DEB_GTK+3_V@), libgtk-3-common (>= @DEB_GTK+3_V@)
+Section: Miscellaneous
+Priority: optional
+Homepage: https://www.gtk.org
+Description: programs for the GTK graphical user interface library
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the utilities which are used by the libraries
+ and other packages.

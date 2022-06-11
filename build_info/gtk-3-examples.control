@@ -1,0 +1,16 @@
+Package: gtk-3-examples
+Version: @DEB_GTK+3_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libatk1.0-0 (>= 2.35.1), libcairo2 (>= 1.14.0), libepoxy0 (>= 1.0), libgdk-pixbuf-2.0-0 (>= 2.40.0), libglib2.0-0 (>= 2.59.0), libgtk-3-0 (= 3.24.24), libharfbuzz0b (>= 0.9.9), libpango-1.0-0 (>= 1.41.0), libpangocairo-1.0-0 (>= 1.41.0), libpangoft2-1.0-0 (>= 1.41.0), libx11-6
+Section: X11
+Priority: optional
+Homepage: https://www.gtk.org/
+Description: example files for GTK 3
+ GTK is a multi-platform toolkit for creating graphical user
+ interfaces. Offering a complete set of widgets, GTK is suitable
+ for projects ranging from small one-off tools to complete application
+ suites.
+ .
+ This package contains the example files and a demonstration program
+ for GTK3.
