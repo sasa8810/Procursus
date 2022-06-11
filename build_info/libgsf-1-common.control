@@ -1,0 +1,14 @@
+Package: libgsf-1-common
+Version: @DEB_LIBGSF_V@
+Architecture: all
+Maintainer: @DEB_MAINTAINER@
+Section: Libraries
+Priority: optional
+Homepage: http://projects.gnome.org/libgsf/
+Description: Structured File Library - common files
+ The GNOME Structured File Library aims to provide an efficient
+ extensible I/O abstraction for dealing with different structured file
+ formats.
+ .
+ These are the architecture independent files that are part of libgsf,
+ like translations of messages.

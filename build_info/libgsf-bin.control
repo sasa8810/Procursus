@@ -1,0 +1,17 @@
+Package: libgsf-bin
+Version: @DEB_LIBGSF_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.26.0), libgsf-1-114 (>= @DEB_LIBGSF_V@)
+Suggests: imagemagick
+Section: GNOME
+Priority: optional
+Homepage: http://projects.gnome.org/libgsf/
+Description: Structured File Library - programs
+ The GNOME Structured File Library aims to provide an efficient
+ extensible I/O abstraction for dealing with different structured file
+ formats.
+ .
+ These are the programs that are shipped as part of libgsf. They include
+ a thumbnail generator, a tar-like archiver application and a VBA macro
+ extractor.

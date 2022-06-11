@@ -1,0 +1,16 @@
+Package: libgsf-1-dev
+Version: @DEB_LIBGSF_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgsf-1-114 (= 1.14.47-1), gir1.2-gsf-1 (= 1.14.47-1), libbz2-dev, libglib2.0-dev
+Section: 
+Priority:
+Homepage: http://projects.gnome.org/libgsf/
+Description: Structured File Library - development files
+ This package contains the development files used in building applications
+ that use the GNOME Structured File Library.
+ .
+ The GNOME Structured File Library aims to provide an efficient
+ extensible I/O abstraction for dealing with different structured file
+ formats. It is actively being developed and its API is still likely to
+ undergo significant changes (in particular, extensions).
