@@ -1,0 +1,11 @@
+Package: libthunarx-3-0
+Version: @DEB_THUNAR_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: thunar-data, libatk1.0-0 (>= 1.12.4), libexo-2-0 (>= 0.11.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.4), libpango-1.0-0 (>= 1.14.0), libpcre1, libx11-6, libxfce4ui-2-0 (>= 4.15.3), libxfce4util7 (>= 4.15.3), libxfconf-0-3 (>= 4.6.0)
+Section: Libraries
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/thunar/start
+Description: extension library for thunar
+ This package contains the Thunar extension library which permits adding new
+ features to the Thunar file manager.

@@ -1,0 +1,11 @@
+Package: libthunarx-3-dev
+Version: @DEB_THUNAR_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libglib2.0-dev, libgtk-3-dev, libthunarx-3-0 (= @DEB_THUNAR_V@), thunar-data (= @DEB_THUNAR_V@)
+Section: Development
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/thunar/start
+Description: Development files for libthunarx
+ This package contains the headers and the static library for libthunarx,
+ the extension library used by thunar.

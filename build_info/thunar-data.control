@@ -1,0 +1,10 @@
+Package: thunar-data
+Version: @DEB_THUNAR_V@
+Architecture: all
+Maintainer: @DEB_MAINTAINER@
+Section: XFCE 
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/thunar/start
+Description: Provides thunar documentation, icons and translations
+ This package contains architecture-independent files for thunar, the file
+ manager and file management libraries for Xfce desktop environment.
