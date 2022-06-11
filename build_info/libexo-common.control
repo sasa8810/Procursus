@@ -1,0 +1,18 @@
+Package: libexo-common
+Version: @DEB_EXO_V@
+Architecture: all
+Maintainer: @DEB_MAINTAINER@
+Suggests: sensible-utils
+Section: Libraries
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/exo/start
+Description: libexo common files
+ libexo is a library for Xfce that contains a bunch of additional widgets and
+ a framework for editable toolbars (an improved version of the framework
+ present in GNOME), light-weight session management support, functions to
+ automatically synchronize object properties (based on GObject Binding
+ Properties) and several miscellaneous utility and helper functions for
+ application developers.
+ .
+ This package contains the common files in use by exo library. It ships
+ desktop files and documentation.

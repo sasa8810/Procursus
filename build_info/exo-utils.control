@@ -1,0 +1,15 @@
+Package: exo-utils
+Version: @DEB_EXO_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libexo-2-0 (= @DEB_EXO_V@), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.22.0), libxfce4ui-2-0 (>= 4.15.1), libxfce4util7 (>= 4.9.0)
+Section: XFCE
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/exo/start
+Description: Utility files for libexo
+ This package contains the Xfce settings plugin and the utility files for
+ libexo-2-0 which are:
+   - exo-csource
+   - exo-desktop-item-edit
+   - exo-open
+   - exo-preferred-applications

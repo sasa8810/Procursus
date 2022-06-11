@@ -1,0 +1,21 @@
+Package: libexo-2-0
+Version: @DEB_EXO_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libexo-common, libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.10.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.41.1), libgtk-3-0 (>= 3.22.0), libxfce4util7 (>= 4.9.0)
+Section: Libraries
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/exo/start
+Description: Library with extensions for Xfce (GTK-3 version)
+ libexo is a library for Xfce that contains a bunch of additional widgets and
+ a framework for editable toolbars (an improved version of the framework
+ present in GNOME), light-weight session management support, functions to
+ automatically synchronize object properties (based on GObject Binding
+ Properties) and several miscellaneous utility and helper functions for
+ application developers.
+ .
+ While Xfce ships with quite a few libraries that are primarily targeted at
+ desktop development, libexo is targeted at application development, with a
+ focus on applications for Xfce.
+ .
+ This package provides GTK-3 version
