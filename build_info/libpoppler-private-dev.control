@@ -1,0 +1,13 @@
+Package: libpoppler-private-dev
+Version: @DEB_POPPLER_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libpoppler-dev (= @DEB_POPPLER_V@)
+Section: Development
+Priority: optional
+Homepage: https://poppler.freedesktop.org/
+Description: PDF rendering library -- private development files
+ Poppler is a PDF rendering library based on Xpdf PDF viewer.
+ .
+ This package contains the private and unstable headers needed to build
+ applications using the private Poppler core library.

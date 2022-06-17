@@ -1,0 +1,13 @@
+Package: libpoppler-cpp-dev
+Version: @DEB_POPPLER_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libpoppler-cpp0v10 (= @DEB_POPPLER_V@), libpoppler-dev (= @DEB_POPPLER_V@)
+Section: Development
+Priority: optional
+Homepage: https://poppler.freedesktop.org/
+Description: PDF rendering library -- development files (CPP interface)
+ Poppler is a PDF rendering library based on Xpdf PDF viewer.
+ .
+ This package contains the headers and development libraries needed to
+ build applications using the C++ Poppler interface.

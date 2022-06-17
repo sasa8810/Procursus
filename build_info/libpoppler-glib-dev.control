@@ -1,0 +1,13 @@
+Package: libpoppler-glib-dev
+Version: @DEB_POPPLER_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libpoppler-glib8 (= @DEB_POPPLER_V@), libpoppler-dev (= @DEB_POPPLER_V@), libglib2.0-dev (>= 2.41), libcairo2-dev (>= 1.10.0)
+Section: Development
+Priority: optional
+Homepage: https://poppler.freedesktop.org/
+Description: PDF rendering library -- development files (GLib interface)
+ Poppler is a PDF rendering library based on Xpdf PDF viewer.
+ .
+ This package contains the headers and development libraries needed to
+ build applications using the GLib-based Poppler interface.
