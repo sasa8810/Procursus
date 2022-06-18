@@ -1,0 +1,18 @@
+Package: libopenrawgnome9
+Version: @DEB_LIBOPENRAW_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.12.0), libopenraw9 (= @DEB_LIBOPENRAW_V@)
+Section: Libraries
+Priority: optional
+Homepage: http://libopenraw.freedesktop.org/
+Description: free implementation for RAW decoding (GNOME integration)
+ libopenraw is an ongoing project to provide a free software implementation for
+ camera RAW files decoding. One of the main reason is that dcraw is not suited
+ for easy integration into applications, and there is a need for an easy to use
+ API to build free software digital image processing application.
+ .
+ It also has the goal to address missing feature from dcraw like meta-data
+ decoding and easy thumbnail extraction.
+ .
+ This package contains the GNOME integration library.
