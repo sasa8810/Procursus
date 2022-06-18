@@ -1,0 +1,13 @@
+Package: tumbler-common
+Version: @DEB_TUMBLER_V@
+Architecture: all
+Maintainer: @DEB_MAINTAINER@
+Depends: libtumbler-1-0
+Section: XFCE
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/thunar/tumbler
+Description: D-Bus thumbnailing service (common files)
+ Tumbler is a D-Bus service for applications to request thumbnails for various
+ URI schemes and MIME types.
+ .
+ This package contains files common to the various binary packages.
