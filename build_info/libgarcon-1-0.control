@@ -1,0 +1,13 @@
+Package: libgarcon-1-0
+Version: @DEB_GARCON_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libglib2.0-0 (>= 2.37.3), libxfce4util7 (>= 4.15.6), libgarcon-common, libintl8
+Section: Libraries
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/garcon/start
+Description: freedesktop.org compliant menu implementation for Xfce
+ garcon is a menu implementation that is compliant with the Desktop Menu
+ Specification of freedesktop.org
+ .
+ This package contains the core library and the GTK2 support library.

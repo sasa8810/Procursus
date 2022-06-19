@@ -1,0 +1,12 @@
+Package: libgarcon-gtk3-1-dev
+Version: @DEB_GARCON_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgracon-1-dev, libgarcon-gtk3-1-0 (= @DEB_GARCON_V@), libxfce4ui-2-dev
+Suggests: devhelp
+Section: Development
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/garcon/start
+Description: Development files for garcon-gtk3
+ This package contains the headers and the static library for garcon-gtk3
+ library, the GTK3 support library for the garcon menu library.

@@ -1,0 +1,12 @@
+Package: libgarcon-common
+Version: @DEB_GARCON_V@
+Architecture: all
+Maintainer: @DEB_MAINTAINER@
+Section: Libraries
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/garcon/start
+Description: common files for libgarcon menu implementation
+ garcon is a menu implementation that is compliant with the Desktop Menu
+ Specification of freedesktop.org
+ .
+ This package contains common files like desktop-directories and menu file.

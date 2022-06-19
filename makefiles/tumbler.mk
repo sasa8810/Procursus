@@ -3,7 +3,7 @@ $(error Use the main Makefile)
 endif
 
 SUBPROJECTS     += tumbler
-TUMBLER_VERSION := 4.16.0
+TUMBLER_VERSION := 4.17.1
 DEB_TUMBLER_V   ?= $(TUMBLER_VERSION)
 
 tumbler-setup: setup
