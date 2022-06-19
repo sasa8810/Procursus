@@ -20,8 +20,8 @@ libxfce4ui: libxfce4ui-setup libx11 libxau libxmu xorgproto xxhash xfconf gtk+3
 	cd $(BUILD_WORK)/libxfce4ui && mkdir -p build && cd build && ../configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-visibility \
 		--enable-introspection=no \
 		--with-vendor-info=Procursus \

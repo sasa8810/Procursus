@@ -18,8 +18,8 @@ xfce4-terminal: xfce4-terminal-setup libx11 libxau libxmu xorgproto xxhash
 	cd $(BUILD_WORK)/xfce4-terminal && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-terminal
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-terminal install \
 		DESTDIR=$(BUILD_STAGE)/xfce4-terminal

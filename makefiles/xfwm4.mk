@@ -18,8 +18,8 @@ xfwm4: xfwm4-setup libx11 libxau libxmu xorgproto xxhash
 	cd $(BUILD_WORK)/xfwm4 && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-startup-notification
 	+$(MAKE) -C $(BUILD_WORK)/xfwm4
 	+$(MAKE) -C $(BUILD_WORK)/xfwm4 install \

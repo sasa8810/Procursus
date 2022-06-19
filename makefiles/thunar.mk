@@ -18,8 +18,8 @@ thunar: thunar-setup libx11 libxau libxmu xorgproto xxhash exo hicolor-icon-them
 	cd $(BUILD_WORK)/thunar && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-notifications \
 		--enable-introspection=no
 	+$(MAKE) -C $(BUILD_WORK)/thunar

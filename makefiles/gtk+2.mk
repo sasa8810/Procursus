@@ -38,8 +38,8 @@ gtk+2: gtk+2-setup libx11 libxau libxmu xorgproto xxhash libepoxy at-spi2-atk pa
 		--disable-cups \
 		--with-x \
 		--disable-shm \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include
 	export GI_CROSS_LAUNCHER=$(PWD)/build_tools/gi-cross-launcher-load.sh && \
 	+$(MAKE) -i -C $(BUILD_WORK)/gtk+2
 	+$(MAKE) -i -C $(BUILD_WORK)/gtk+2 install \

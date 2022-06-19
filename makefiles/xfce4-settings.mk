@@ -18,8 +18,8 @@ xfce4-settings: xfce4-settings-setup libx11 libxau libxmu xorgproto xxhash
 	cd $(BUILD_WORK)/xfce4-settings && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-settings
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-settings install \
 		DESTDIR=$(BUILD_STAGE)/xfce4-settings

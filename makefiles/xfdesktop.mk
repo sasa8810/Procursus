@@ -20,8 +20,8 @@ xfdesktop: xfdesktop-setup libx11 libxau libxmu xorgproto xxhash
 	cd $(BUILD_WORK)/xfdesktop && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-notifications \
 		--enable-thunarx
 	+$(MAKE) -C $(BUILD_WORK)/xfdesktop

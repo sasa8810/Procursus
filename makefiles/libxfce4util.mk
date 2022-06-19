@@ -23,8 +23,8 @@ else
 libxfce4util: libxfce4util-setup libx11 libxau libxmu xorgproto xxhash glib2.0
 	cd $(BUILD_WORK)/libxfce4util && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-visibility \
 		--enable-introspection=no
 	+$(MAKE) -C $(BUILD_WORK)/libxfce4util

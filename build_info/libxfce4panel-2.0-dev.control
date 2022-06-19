@@ -1,0 +1,11 @@
+Package: libxfce4panel-2.0-dev
+Version: @DEB_XFCE4-PANEL_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libglib2.0-dev, libgtk-3-dev, libxfce4panel-2.0-4 (= @DEB_XFCE4-PANEL_V@), libxfce4util-dev
+Section: XFCE
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/xfce4-panel/start
+Description: Xfce4 panel library (development files for GTK3 variant)
+ This package contains development files for the library (GTK3 variant) used by
+ various plugins for the Xfce panel.

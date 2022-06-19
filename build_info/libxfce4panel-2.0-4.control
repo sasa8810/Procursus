@@ -1,0 +1,11 @@
+Package: libxfce4panel-2.0-4
+Version: @DEB_XFCE4-PANEL_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libcairo2 (>= 1.2.4), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.5), libxfce4util7 (>= 4.15.6)
+Section: XFCE
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/xfce4-panel/start
+Description: Xfce4 panel library (GTK3 variant)
+ This package contains the GTK3 variant of the panel library, used by the
+ various plugins for the Xfce panel.

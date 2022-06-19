@@ -23,8 +23,8 @@ xfconf: xfconf-setup libx11 libxau libxmu xorgproto xxhash libxfce4util
 	cd $(BUILD_WORK)/xfconf && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-visibility \
 		--enable-introspection=no
 	+$(MAKE) -C $(BUILD_WORK)/xfconf

@@ -18,8 +18,8 @@ xfce4-taskmanager: xfce4-taskmanager-setup libx11 libxau libxmu xorgproto xxhash
 	cd $(BUILD_WORK)/xfce4-taskmanager && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
-		--x-libraries=$(BUILD_BASE)/usr/lib \
-		--x-includes=$(BUILD_BASE)/usr/include \
+		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
+		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--enable-wnck3
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-taskmanager
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-taskmanager install \
