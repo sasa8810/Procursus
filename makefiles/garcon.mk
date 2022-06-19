@@ -40,7 +40,7 @@ garcon-package: garcon-stage
 	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libgarcon-1.0.dylib $(BUILD_DIST)/libgarcon-1-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 
 	# garcon.mk Prep libgarcon-gtk3-1-0
-	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libgarcon-gtk3-1.0.dylib $(BUILF_DIST)/libgarcon-gtk3-1-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
+	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libgarcon-gtk3-1.0.dylib $(BUILD_DIST)/libgarcon-gtk3-1-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 
 	# garcon.mk Prep libgarcon-1-dev
 	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/gtk-doc $(BUILD_DIST)/libgarcon-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
@@ -49,9 +49,9 @@ garcon-package: garcon-stage
 	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/garcon-1 $(BUILD_DIST)/libgarcon-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include
 
 	# garcon.mk Prep libgarcon-gtk3-1-dev
-	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/libgarcon-gtk3-1.{dylib,a} $(BUILD_DIST)/libgarcon-gtk3-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
+	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libgarcon-gtk3-1.{dylib,a} $(BUILD_DIST)/libgarcon-gtk3-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/pkgconfig/garcon-gtk3-1.pc $(BUILD_DIST)/libgarcon-gtk3-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/pkgconfig
-	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/garcon-gtk3-1 $(BUILD_DIST)/libgarcon-3-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include
+	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/garcon-gtk3-1 $(BUILD_DIST)/libgarcon-gtk3-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include
 
 	# garcon.mk Sign
 	$(call SIGN,libgarcon-1-0,general.xml)
