@@ -14,8 +14,9 @@ ifneq ($(wildcard $(BUILD_WORK)/xfce4-appfinder/.build_complete),)
 xfce4-appfinder:
 	@echo "Using previously built xfce4-appfinder."
 else
-xfce4-appfinder: xfce4-appfinder-setup libx11 libxau libxmu xorgproto xxhash
+xfce4-appfinder: xfce4-appfinder-setup garcon gtk+3 xfconf libxfce4ui
 	cd $(BUILD_WORK)/xfce4-appfinder && ./configure -C \
+		--enable-debug=no \
 		$(DEFAULT_CONFIGURE_FLAGS)
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-appfinder
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-appfinder install \

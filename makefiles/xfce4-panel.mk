@@ -3,7 +3,7 @@ $(error Use the main Makefile)
 endif
 
 SUBPROJECTS         += xfce4-panel
-XFCE4-PANEL_VERSION := 4.16.3
+XFCE4-PANEL_VERSION := 4.17.1
 DEB_XFCE4-PANEL_V   ?= $(XFCE4-PANEL_VERSION)
 
 xfce4-panel-setup: setup
