@@ -25,7 +25,7 @@ xfce4-terminal: xfce4-terminal-setup libxfce4util libxfce4ui gtk+3 gettext vte l
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-terminal
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-terminal install \
 		DESTDIR=$(BUILD_STAGE)/xfce4-terminal
-	$(call AFTER_BUILD,copy)
+	$(call AFTER_BUILD)
 endif
 
 xfce4-terminal-package: xfce4-terminal-stage

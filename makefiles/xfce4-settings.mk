@@ -14,7 +14,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xfce4-settings/.build_complete),)
 xfce4-settings:
 	@echo "Using previously built xfce4-settings."
 else
-xfce4-settings: xfce4-settings-setup libx11 libxau libxmu xorgproto xxhash
+xfce4-settings: xfce4-settings-setup libx11 exo gtk+3 libxcursor xfconf libxfce4ui libxfce4util libxrandr libxi cairo congconfig freetype gdk-pixbuf
 	cd $(BUILD_WORK)/xfce4-settings && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
@@ -23,23 +23,32 @@ xfce4-settings: xfce4-settings-setup libx11 libxau libxmu xorgproto xxhash
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-settings
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-settings install \
 		DESTDIR=$(BUILD_STAGE)/xfce4-settings
-	$(call AFTER_BUILD,copy)
+	$(call AFTER_BUILD)
 endif
 
 xfce4-settings-package: xfce4-settings-stage
 	# xfce4-settings.mk Package Structure
-	rm -rf $(BUILD_DIST)/xfce4-settings
+	rm -rf $(BUILD_DIST)/xfce4-{settings,helpers}
+	mkdir -p $(BUILD_DIST)/xfce4-{settings,helpers}/{$(MEMO_PREFIX)/etc/xdg/xfce4,$(MEMO_SUB_PREFIX)/share}
 
 	# xfce4-settings.mk Prep xfce4-settings
-	cp -a $(BUILD_STAGE)/xfce4-settings $(BUILD_DIST)
+	cp -a $(BUILD_STAGE)/xfce4-settings/$(MEMO_PREFIX)/etc/xdg/xfce4/xfconf $(BUILD_DIST)/xfce4-settings/$(MEMO_PREFIX)/etc/xdg/xfce4
+	cp -a $(BUILD_STAGE)/xfce4-settings/$(MEMO_PREFIX)/etc/xdg/{autostart,menus} $(BUILD_DIST)/xfce4-settings/$(MEMO_PREFIX)/etc/xdg
+	cp -a $(BUILD_STAGE)/xfce4-settings/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin $(BUILD_DIST)/xfce4-settings/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)
+	cp -a $(BUILD_STAGE)/xfce4-settings/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/{applications,icons,locale} $(BUILD_DIST)/xfce4-settings/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
+
+	# xfce4-settings.mk Prep xfce4-helpers
+	cp -a $(BUILD_STAGE)/xfce4-settings/$(MEMO_PREFIX)/etc/xdg/xfce4/helpers.rc $(BUILD_DIST)/xfce4-helpers/$(MEMO_PREFIX)/etc/xdg/xfce4
+	cp -a $(BUILD_STAGE)/xfce4-settings/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/xfce4 $(BUILD_DIST)/xfce4-helpers/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
 
 	# xfce4-settings.mk Sign
 	$(call SIGN,xfce4-settings,general.xml)
 
 	# xfce4-settings.mk Make .debs
 	$(call PACK,xfce4-settings,DEB_XFCE4-SETTINGS_V)
+	$(call PACK,xfce4-helpers,DEB_XFCE4-SETTINGS_V)
 
 	# xfce4-settings.mk Build cleanup
-	rm -rf $(BUILD_DIST)/xfce4-settings
+	rm -rf $(BUILD_DIST)/xfce4-{settings,helpers}
 
 .PHONY: xfce4-settings xfce4-settings-package
