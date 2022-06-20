@@ -17,6 +17,7 @@ else
 xfce4-dev-tools: xfce4-dev-tools-setup glib2.0 # libx11 libxau libxmu xorgproto xxhash
 	cd $(BUILD_WORK)/xfce4-dev-tools && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS)
+	+sed -i 's/tests/docs/' $(BUILD_WORK)/xfce4-dev-tools/Makefile
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-dev-tools
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-dev-tools install \
 		DESTDIR=$(BUILD_STAGE)/xfce4-dev-tools
