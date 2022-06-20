@@ -12,17 +12,19 @@ xfdesktop-setup: setup
 
 ifneq ($(wildcard $(BUILD_WORK)/xfdesktop/.build_complete),)
 xfdesktop:
-	find $(BUILD_STAGE)/xfdesktop -type f -exec codesign --remove {} \; &> /dev/null; \
-	find $(BUILD_STAGE)/xfdesktop -type f -exec codesign --sign $(CODESIGN_IDENTITY) --force --preserve-metadata=entitlements,requirements,flags,runtime {} \; &> /dev/null
 	@echo "Using previously built xfdesktop."
 else
-xfdesktop: xfdesktop-setup libx11 libxau libxmu xorgproto xxhash
+xfdesktop: xfdesktop-setup libx11 exo gtk+3 libxfce4ui libxfce4util gettext pango cairo freetype fontconfig garcon
 	cd $(BUILD_WORK)/xfdesktop && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
 		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
 		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-notifications \
+		--with-file-manager-fallback=thunar \
+		--enable-file-icons \
+		--enable-file-icons \
+		--enable-debug=no \
 		--enable-thunarx
 	+$(MAKE) -C $(BUILD_WORK)/xfdesktop
 	+$(MAKE) -C $(BUILD_WORK)/xfdesktop install \
@@ -32,18 +34,24 @@ endif
 
 xfdesktop-package: xfdesktop-stage
 	# xfdesktop.mk Package Structure
-	rm -rf $(BUILD_DIST)/xfdesktop
+	rm -rf $(BUILD_DIST)/xfdesktop4{,-data}
+	mkdir -p $(BUILD_DIST)/xfdesktop4{,-data}/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
 
-	# xfdesktop.mk Prep xfdesktop
-	cp -a $(BUILD_STAGE)/xfdesktop $(BUILD_DIST)
+	# xfdesktop.mk Prep xfdesktop4
+	cp -a $(BUILD_STAGE)/xfdesktop/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin $(BUILD_DIST)/xfdesktop4/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)
+	cp -a $(BUILD_STAGE)/xfdesktop/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man $(BUILD_DIST)/xfdesktop4/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
+
+	# xfdesktop.mk Prep xfdesktop4-data
+	cp -a $(BUILD_STAGE)/xfdesktop/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/{applications,backgrounds,icons,locale,pixmaps} $(BUILD_DIST)/xfdesktop4-data/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
 
 	# xfdesktop.mk Sign
-	$(call SIGN,xfdesktop,general.xml)
+	$(call SIGN,xfdesktop4,general.xml)
 
 	# xfdesktop.mk Make .debs
-	$(call PACK,xfdesktop,DEB_XFDESKTOP_V)
+	$(call PACK,xfdesktop4,DEB_XFDESKTOP_V)
+	$(call PACK,xfdesktop4-data,DEB_XFDESKTOP_V)
 
 	# xfdesktop.mk Build cleanup
-	rm -rf $(BUILD_DIST)/xfdesktop
+	rm -rf $(BUILD_DIST)/xfdesktop4{,-data}
 
 .PHONY: xfdesktop xfdesktop-package

@@ -14,7 +14,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xfce4-terminal/.build_complete),)
 xfce4-terminal:
 	@echo "Using previously built xfce4-terminal."
 else
-xfce4-terminal: xfce4-terminal-setup libxfce4util libxfce4ui gtk+3 gettext vte libx11 cairo pango glib2.0
+xfce4-terminal: xfce4-terminal-setup libxfce4util libxfce4ui gtk+3 gettext vte libx11 cairo pango glib2.0 garcon
 	cd $(BUILD_WORK)/xfce4-terminal && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
