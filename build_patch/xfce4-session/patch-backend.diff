@@ -32,16 +32,3 @@
  
    return FALSE;
  }
---- a/xfsm-shutdown-helper/main.c	2016-01-02 01:09:14.000000000 +0100
-+++ b/xfsm-shutdown-helper/main.c	2016-01-02 01:28:03.000000000 +0100
-@@ -91,6 +91,10 @@
- #define UP_BACKEND_SUSPEND_COMMAND	"/usr/sbin/zzz"
- #define UP_BACKEND_HIBERNATE_COMMAND "/usr/sbin/ZZZ"
- #endif
-+#ifdef BACKEND_TYPE_DARWIN
-+#define UP_BACKEND_SUSPEND_COMMAND "@MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/pmset sleepnow"	/* hibernatemode 0 */
-+#define UP_BACKEND_HIBERNATE_COMMAND "@MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/pmset sleepnow"	/* hibernatemode 3 */
-+#endif
- 
- 
- static gboolean

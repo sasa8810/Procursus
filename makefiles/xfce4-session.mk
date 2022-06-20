@@ -13,19 +13,20 @@ xfce4-session-setup: setup
 
 ifneq ($(wildcard $(BUILD_WORK)/xfce4-session/.build_complete),)
 xfce4-session:
-	find $(BUILD_STAGE)/xfce4-session -type f -exec codesign --remove {} \; &> /dev/null; \
-	find $(BUILD_STAGE)/xfce4-session -type f -exec codesign --sign $(CODESIGN_IDENTITY) --force --preserve-metadata=entitlements,requirements,flags,runtime {} \; &> /dev/null
 	@echo "Using previously built xfce4-session."
 else
-xfce4-session: xfce4-session-setup libx11 libxau libxmu xorgproto xxhash
-	cd $(BUILD_WORK)/xfce4-session && autoreconf -fiv && ./configure -C \
+xfce4-session: xfce4-session-setup libx11 x11-xserver-utils libice xfconf
+	cd $(BUILD_WORK)/xfce4-session && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
 		--x-libraries=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib \
 		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-polkit \
+		--with-backend=darwin \
+		--enable-debug=no \
 		ac_cv_func_malloc_0_nonnull=yes \
-		ac_cv_func_realloc_0_nonnull=yes
+		ac_cv_func_realloc_0_nonnull=yes \
+		ac_cv_path_ICEAUTH=$(BUILD_STAGE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/iceauth
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-session
 	+$(MAKE) -C $(BUILD_WORK)/xfce4-session install \
 		DESTDIR=$(BUILD_STAGE)/xfce4-session

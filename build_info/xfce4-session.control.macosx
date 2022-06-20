@@ -1,0 +1,13 @@
+Package: xfce4-session
+Version: @DEB_XFCE4-SESSION_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libxfce4ui
+Section: XFCE
+Priority: optional
+Homepage: https://docs.xfce.org/xfce/xfce4-session/start
+Description: Xfce4 Session Manager
+ xfce4-session is an X11-compliant "session manager" designed for use with
+ the Xfce4 Desktop Environment. On log out, the session manager saves the
+ state of all your running applications. When you log back in, the session
+ manager restores the same applications with the same window positions.

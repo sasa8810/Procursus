@@ -1,0 +1,34 @@
+diff -urN a/libxfsm/xfsm-shutdown-common.h b/libxfsm/xfsm-shutdown-common.h
+--- a/libxfsm/xfsm-shutdown-common.h	2019-05-06 06:00:21.000000000 +0800
++++ b/libxfsm/xfsm-shutdown-common.h	2022-06-20 16:55:08.081826478 +0800
+@@ -50,6 +50,15 @@
+ #elif defined(sun) || defined(__sun)
+ #define POWEROFF_CMD  "/usr/sbin/shutdown -i 5 -g 0 -y"
+ #define REBOOT_CMD    "/usr/sbin/shutdown -i 6 -g 0 -y"
++#elif 1
++#include <TargetConditionals.h>
++#ifdef TARGET_OS_OSX
++#define POWEROFF_CMD  "/sbin/halt"
++#define REBOOT_CMD    "/sbin/reboot"
++#else
++#define POWEROFF_CMD  "@MEMO_PREFIX@/sbin/halt"
++#define REBOOT_CMD    "@MEMO_PREFIX@/sbin/reboot"
++#endif
+ #else
+ #define POWEROFF_CMD  "/sbin/shutdown -h now"
+ #define REBOOT_CMD    "/sbin/shutdown -r now"
+@@ -70,4 +79,14 @@
+ #define UP_BACKEND_HIBERNATE_COMMAND "/usr/sbin/ZZZ"
+ #endif
+ 
++#if 1
++#if TARGET_OS_OSX
++#define UP_BACKEND_SUSPEND_COMMAND "/bin/sh -c '/usr/bin/pmset -a hibernatemode 0 && /usr/bin/pmset sleepnow'"
++#define UP_BACKEND_HIBERNATE_COMMAND "/bin/sh -c '/usr/bin/pmset -a hibernatemode 25 && /usr/bin/pmset sleepnow'"
++#else
++#define UP_BACKEND_SUSPEND_COMMAND "@MEMO_PREFIX@/bin/sh -c '@MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/pmset -a hibernatemode 0 && @MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/pmset sleepnow'"
++#define UP_BACKEND_HIBERNATE_COMMAND "@MEMO_PREFIX@/bin/sh -c '@MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/pmset -a hibernatemode 25 && @MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/pmset sleepnow'"
++#endif
++#endif
++
+ #endif /* __XFSM_SHUTDOWN_COMMON_H_ */

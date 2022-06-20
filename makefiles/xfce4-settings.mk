@@ -14,7 +14,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xfce4-settings/.build_complete),)
 xfce4-settings:
 	@echo "Using previously built xfce4-settings."
 else
-xfce4-settings: xfce4-settings-setup libx11 exo gtk+3 libxcursor xfconf libxfce4ui libxfce4util libxrandr libxi cairo congconfig freetype gdk-pixbuf garcon
+xfce4-settings: xfce4-settings-setup libx11 exo gtk+3 libxcursor xfconf libxfce4ui libxfce4util libxrandr libxi cairo congconfig freetype gdk-pixbuf garcon libice libxext libxi libxmu libxt libxxf86vm libxaw
 	cd $(BUILD_WORK)/xfce4-settings && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \

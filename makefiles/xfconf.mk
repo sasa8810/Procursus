@@ -19,7 +19,7 @@ else ifneq ($(wildcard $(BUILD_WORK)/xfconf/.build_complete),)
 xfconf:
 	@echo "Using previously built xfconf."
 else
-xfconf: xfconf-setup libx11 libxau libxmu xorgproto xxhash libxfce4util
+xfconf: xfconf-setup libx11 libxfce4util libice gtk+3 fontconfig freetype gettext
 	cd $(BUILD_WORK)/xfconf && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
