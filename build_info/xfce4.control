@@ -2,7 +2,7 @@ Package: xfce4
 Version: @DEB_XFCE4_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libxfce4ui-utils (>= @DEB_XFCE4_V@), thunar (>= @DEB_XFCE4_V@), xfce4-appfinder (>= @DEB_XFCE4_V@.0), xfce4-panel (>= @DEB_XFCE4_V@.0), xfce4-pulseaudio-plugin, xfce4-session (>= @DEB_XFCE4_V@.0), xfce4-settings (>= @DEB_XFCE4_V@.0), xfconf (>= @DEB_XFCE4_V@.0), xfdesktop4 (>= @DEB_XFCE4_V@.0), xfwm4 (>= @DEB_XFCE4_V@)
+Depends: libxfce4ui-utils (>= @DEB_XFCE4_V@), thunar (>= @DEB_XFCE4_V@), xfce4-appfinder (>= @DEB_XFCE4_V@.0), xfce4-panel (>= @DEB_XFCE4_V@.0), xfce4-session (>= @DEB_XFCE4_V@), xfce4-settings (>= @DEB_XFCE4_V@), xfconf (>= @DEB_XFCE4_V@), xfdesktop4 (>= @DEB_XFCE4_V@), xfwm4 (>= @DEB_XFCE4_V@)
 Recommends: xserver-xorg-core
 Suggests: xfce4-goodies
 Section: XFCE

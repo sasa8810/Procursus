@@ -1,0 +1,12 @@
+Package: gsettings-desktop-schemas-dev
+Version: @DEB_GSETTINGS-DESKTOP-SCHEMAS_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Section: Development
+Priority: optional
+Homepage: https://www.gnome.org/
+Description: Development files for GSettings desktop-wide schemas
+ gsettings-desktop-schemas contains a collection of GSettings schemas for
+ settings shared by various components of a desktop.
+ .
+ This package contains the development files.
