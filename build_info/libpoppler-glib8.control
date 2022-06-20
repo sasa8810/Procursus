@@ -2,7 +2,7 @@ Package: libpoppler-glib8
 Version: @DEB_POPPLER_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libpoppler122 (= @DEB_POPPLER_V@), libcairo2 (>= 1.12.0), libfreetype6 (>= 2.2.1), libglib2.0-0 (>= 2.41),
+Depends: libpoppler122 (= @DEB_POPPLER_V@), libcairo2 (>= 1.12.0), libfreetype6 (>= 2.2.1), libglib2.0-0 (>= 2.41)
 Section: Libraries
 Priority: optional
 Homepage: https://poppler.freedesktop.org/

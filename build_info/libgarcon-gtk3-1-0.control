@@ -2,7 +2,7 @@ Package: libgarcon-gtk3-1-0
 Version: @DEB_GARCON_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.2.4), libgarcon-1-0 (>= 0.6.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.14.0), libharfbuzz0b (>= 0.6.0),libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libxfce4ui-2-0 (>= 4.15.7), libxfce4util7 (>= 4.15.6)
+Depends: libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.2.4), libgarcon-1-0 (>= 0.6.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.14.0), libharfbuzz0b (>= 0.6.0),libpango1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libxfce4ui-2-0 (>= 4.15.7), libxfce4util7 (>= 4.15.6)
 Section: Libraries
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/garcon/start

@@ -3,7 +3,7 @@ Version: @DEB_LIBOPENRAW_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
 Enhances: libgdk-pixbuf-2.0-0
-Depends: libintl8, libglib-2.0-0, libopenraw9 (= @DEB_LIBOPENRAW_V@), libgdk-pixbuf-2.0-0
+Depends: libintl8, libglib2.0-0, libopenraw9 (= @DEB_LIBOPENRAW_V@), libgdk-pixbuf-2.0-0
 Section: Multimedia
 Priority: optional
 Homepage: http://libopenraw.freedesktop.org/

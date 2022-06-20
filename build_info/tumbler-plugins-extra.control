@@ -2,7 +2,7 @@ Package: tumbler-plugins-extra
 Version: @DEB_TUMBLER_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: tumbler (= @DEB_TUMBLER_V@), libcurl4 (>= 7.83.1), libffmpegthumbnailer4v5, libgdk-pixbuf-2.0-0 (>= 2.30.1), libglib2.0-0 (>= 2.37.3), libgsf-1-114 (>= 1.14.24), libopenrawgnome7, libtumbler-1-0 (>= 0.2.4)
+Depends: tumbler (= @DEB_TUMBLER_V@), libcurl4 (>= 7.83.1), libffmpegthumbnailer4v5, libgdk-pixbuf-2.0-0 (>= 2.30.1), libglib2.0-0 (>= 2.37.3), libgsf-1-114 (>= 1.14.24), libopenrawgnome9, libtumbler-1-0 (>= 0.2.4)
 Section: XFCE
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/thunar/tumbler

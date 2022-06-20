@@ -2,7 +2,7 @@ Package: libopenrawgnome9
 Version: @DEB_LIBOPENRAW_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.12.0), libopenraw9 (= @DEB_LIBOPENRAW_V@)
+Depends: libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.12.0), libopenraw9 (= @DEB_LIBOPENRAW_V@)
 Section: Libraries
 Priority: optional
 Homepage: http://libopenraw.freedesktop.org/

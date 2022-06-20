@@ -2,7 +2,7 @@ Package: libvte-2.91-0
 Version: @DEB_VTE_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libvte-2.91-common (= @DEB_VTE_V@), libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.10.0), libfribidi0 (>= 1.0.0), libglib2.0-0 (>= 2.52.0), libgnutls30 (>= 3.7.0), libgtk-3-0 (>= 3.24.22), libicu67 (>= 67.1-1~), libpango-1.0-0 (>= 1.22.0), libpangocairo-1.0-0 (>= 1.22.0), libpcre2-8-0 (>= 10.22)
+Depends: libvte-2.91-common (= @DEB_VTE_V@), libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.10.0), libfribidi0 (>= 1.0.0), libglib2.0-0 (>= 2.52.0), libgnutls30 (>= 3.7.0), libgtk-3-0 (>= 3.24.22), libicu69 (>= 69.1), libpango1.0-0 (>= 1.22.0), libpangocairo-1.0-0 (>= 1.22.0), libpcre2-8-0 (>= 10.22)
 Section: Libraries
 Priority: optional
 Homepage: https://wiki.gnome.org/Apps/Terminal/VTE

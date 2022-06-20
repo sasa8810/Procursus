@@ -2,7 +2,7 @@ Package: libwnck-3-0
 Version: @DEB_LIBWNCK_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.2.4), libgdk-pixbuf2.0-0 (>= 2.25.2), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.22.0), libpango-1.0-0 (>= 1.14.0), libx11-6, libxrender1, libxres1 (>= 2:1.2.0), libwnck-3-common
+Depends: libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.2.4), libgdk-pixbuf-2.0-0 (>= 2.25.2), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.22.0), libpango1.0-0 (>= 1.14.0), libx11-6, libxrender1, libxres1 (>= 1.2.0), libwnck-3-common
 Section: Libraries
 Priority: optional
 Homepage: https://gitlab.gnome.org/GNOME/libwnck

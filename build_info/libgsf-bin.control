@@ -2,7 +2,7 @@ Package: libgsf-bin
 Version: @DEB_LIBGSF_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.26.0), libgsf-1-114 (>= @DEB_LIBGSF_V@)
+Depends: libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.26.0), libgsf-1-114 (>= @DEB_LIBGSF_V@)
 Suggests: imagemagick
 Section: GNOME
 Priority: optional

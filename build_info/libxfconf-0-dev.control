@@ -3,7 +3,7 @@ Version: @DEB_XFCONF_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
 Section: XFCE
-Depends: libglib2.0-dev, libxfconf-0-3 (= 4.16.0-2), pkg-config
+Depends: libglib2.0-dev, libxfconf-0-3 (= @DEB_XFCONF_V@), pkg-config
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/xfconf/start
 Description: Development files for libxfconf

@@ -2,7 +2,7 @@ Package: libxfce4ui-2-0
 Version: @DEB_LIBXFCE4UI_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libxfce4ui-common, libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.4), libice6 (>= 1:1.0.0), libsm6, libx11-6, libxfce4util7 (>= 4.15.6), libxfconf-0-3 (>= 4.6.0)
+Depends: libxfce4ui-common, libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.4), libice6 (>= 1.0.0), libsm6, libx11-6, libxfce4util7 (>= 4.15.6), libxfconf-0-3 (>= 4.6.0)
 Section: Libraries
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/libxfce4ui/start

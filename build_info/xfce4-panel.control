@@ -2,7 +2,7 @@ Package: xfce4-panel
 Version: @DEB_XFCE4-PANEL_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: exo-utils, libatk1.0-0 (>= 1.12.4), libc6 (>= 2.7), libcairo2 (>= 1.2.4), libexo-2-0 (>= 0.11.0), libgarcon-1-0 (>= 0.3.0), libgarcon-gtk3-1-0 (>= 0.7.1), libgdk-pixbuf-2.0-0 (>= 2.25.2), libglib2.0-0 (>= 2.41.1), libgtk-3-0 (>= 3.21.5), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libwnck-3-0 (>= 3.2.0), libx11-6, libxext6, libxfce4panel-2.0-4 (>= @DEB_XFCE4-PANEL_V@), libxfce4ui-2-0 (>= 4.15.8), libxfce4util7 (>= 4.15.6), libxfconf-0-3 (>= 4.13.2)
+Depends: exo-utils, libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.2.4), libexo-2-0 (>= 0.11.0), libgarcon-1-0 (>= 0.3.0), libgarcon-gtk3-1-0 (>= 0.7.1), libgdk-pixbuf-2.0-0 (>= 2.25.2), libglib2.0-0 (>= 2.41.1), libgtk-3-0 (>= 3.21.5), libpango1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libwnck-3-0 (>= 3.2.0), libx11-6, libxext6, libxfce4panel-2.0-4 (>= @DEB_XFCE4-PANEL_V@), libxfce4ui-2-0 (>= 4.15.8), libxfce4util7 (>= 4.15.6), libxfconf-0-3 (>= 4.13.2)
 Section: XFCE
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/xfce4-panel/start

@@ -30,7 +30,7 @@ ifneq ($(wildcard $(BUILD_WORK)/at-spi2-core/.build_complete),)
 at-spi2-core:
 	@echo "Using previously built at-spi2-core."
 else
-at-spi2-core: at-spi2-core-setup libx11 libxau libxmu xorgproto xxhash
+at-spi2-core: at-spi2-core-setup libx11 libxi libxtst dbus glib2.0 gettext
 	cd $(BUILD_WORK)/at-spi2-core/build && meson \
 		--cross-file cross.txt \
 		--wrap-mode=nofallback \

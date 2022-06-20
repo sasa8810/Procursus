@@ -2,7 +2,7 @@ Package: libpoppler-dev
 Version: @DEB_POPPLER_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libpoppler102 (= @DEB_POPPLER_V@)
+Depends: libpoppler122 (= @DEB_POPPLER_V@)
 Section: Development
 Priority: optional
 Homepage: https://poppler.freedesktop.org/

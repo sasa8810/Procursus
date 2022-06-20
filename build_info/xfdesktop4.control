@@ -1,8 +1,9 @@
+y
 Package: xfdesktop4
 Version: @DEB_XFDESKTOP_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: exo-utils, xfdesktop4-data (= @DEB_XFDESKTOP_V@), libcairo2 (>= 1.10.0), libexo-2-0 (>= 0.11.0), libgarcon-1-0 (>= 0.3.0), libgarcon-gtk3-1-0 (>= 0.6.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.22), libpango-1.0-0 (>= 1.44.6), libthunarx-3-0 (>= 1.7.0), libwnck-3-0 (>= 3.14), libx11-6, libxfce4ui-2-0 (>= 4.13.0), libxfce4util7 (>= 4.13.0), libxfconf-0-3 (>= 4.12.1)
+Depends: exo-utils, xfdesktop4-data (= @DEB_XFDESKTOP_V@), libcairo2 (>= 1.10.0), libexo-2-0 (>= 0.11.0), libgarcon-1-0 (>= 0.3.0), libgarcon-gtk3-1-0 (>= 0.6.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.22), libpango1.0-0 (>= 1.44.6), libthunarx-3-0 (>= 1.7.0), libwnck-3-0 (>= 3.14), libx11-6, libxfce4ui-2-0 (>= 4.13.0), libxfce4util7 (>= 4.13.0), libxfconf-0-3 (>= 4.12.1)
 Section: XFCE
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/xfdesktop/start

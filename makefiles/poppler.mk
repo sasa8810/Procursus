@@ -78,6 +78,7 @@ poppler-package: poppler-stage
 	$(call PACK,libpoppler-dev,DEB_POPPLER_V)
 	$(call PACK,libpoppler-cpp-dev,DEB_POPPLER_V)
 	$(call PACK,libpoppler-private-dev,DEB_POPPLER_V)
+	$(call PACK,libpoppler-glib8,DEB_POPPLER_V)
 	$(call PACK,libpoppler-glib-dev,DEB_POPPLER_V)
 
 	# poppler.mk Build cleanup

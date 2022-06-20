@@ -3,7 +3,7 @@ Version: @DEB_PANGO_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
 Depends: fontconfig (>= 2.13.0), libfribidi0 (>= 1.0.6), libglib2.0-0 (>= 2.67.3), libharfbuzz0b (>= 2.6.0)
-Provides: libpango-1.0-0
+Provides: libpango1.0-0
 Section: Libraries
 Priority: optional
 Homepage: https://www.pango.org/

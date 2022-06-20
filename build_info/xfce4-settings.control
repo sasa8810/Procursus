@@ -3,7 +3,7 @@ Version: @DEB_XFCE4-SETTINGS_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
 Recommends: colord, x11-utils, xiccd
-Depends: exo-utils, libgarcon-common (>= 0.2.0), xfce4-helpers, xfconf, libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.10.0), libexo-2-0 (>= 0.11.5), libfontconfig1 (>= 2.12.6), libgarcon-1-0 (>= 0.6.2), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.5), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libx11-6, libxcursor1 (>> 1.1.2), libxfce4ui-2-0 (>= 4.15.1), libxfce4util7 (>= 4.15.3), libxfconf-0-3 (>= 4.13.0), libxi6 (>= 1.2.0), libxrandr2 (>= 1.2.99.3)
+Depends: exo-utils, libgarcon-common (>= 0.2.0), xfce4-helpers, xfconf, libatk1.0-0 (>= 1.12.4), libcairo2 (>= 1.10.0), libexo-2-0 (>= 0.11.5), libfontconfig1 (>= 2.12.6), libgarcon-1-0 (>= 0.6.2), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.5), libpango1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libx11-6, libxcursor1 (>> 1.1.2), libxfce4ui-2-0 (>= 4.15.1), libxfce4util7 (>= 4.15.3), libxfconf-0-3 (>= 4.13.0), libxi6 (>= 1.2.0), libxrandr2 (>= 1.2.99.3)
 Section: XFCE
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/xfce4-settings/start

@@ -2,7 +2,7 @@ Package: libgarcon-gtk3-1-dev
 Version: @DEB_GARCON_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libgracon-1-dev, libgarcon-gtk3-1-0 (= @DEB_GARCON_V@), libxfce4ui-2-dev
+Depends: libgarcon-1-dev, libgarcon-gtk3-1-0 (= @DEB_GARCON_V@), libxfce4ui-2-dev
 Suggests: devhelp
 Section: Development
 Priority: optional

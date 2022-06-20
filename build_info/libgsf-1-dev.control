@@ -2,9 +2,9 @@ Package: libgsf-1-dev
 Version: @DEB_LIBGSF_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libgsf-1-114 (= 1.14.47-1), gir1.2-gsf-1 (= 1.14.47-1), libbz2-dev, libglib2.0-dev
-Section: 
-Priority:
+Depends: libgsf-1-114 (= @DEB_LIBGSF_V@), libglib2.0-dev
+Section: Development
+Priority: optional
 Homepage: http://projects.gnome.org/libgsf/
 Description: Structured File Library - development files
  This package contains the development files used in building applications
