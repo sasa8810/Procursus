@@ -1,6 +1,6 @@
 Package: libpango1.0-dev
 Version: @DEB_PANGO_V@
-Architecture: any
+Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
 Depends: libcairo2-dev (>= 1.12.10),
          libfontconfig-dev (>= 2.13.0),

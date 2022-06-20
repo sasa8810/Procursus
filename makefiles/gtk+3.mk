@@ -77,7 +77,7 @@ gtk+3-package: gtk+3-stage
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/pkgconfig/gail-3.0.pc $(BUILD_DIST)/libgail-3-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/pkgconfig
 
 	# gtk+3.mk Prep libgtk-3-0
-	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libgtk-3.0.dylib $(BUILD_DIST)/libgtk-3-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
+	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libg{t,d}k-3.0.dylib $(BUILD_DIST)/libgtk-3-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/immodules/im-*.so $(BUILD_DIST)/libgtk-3-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/immodules
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/printbackends/libprintbackend-{cups,file,lpr}.so $(BUILD_DIST)/libgtk-3-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/printbackends
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/gtk-query-immodules-3.0 $(BUILD_DIST)/libgtk-3-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
@@ -92,6 +92,8 @@ gtk+3-package: gtk+3-stage
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/{glib-2.0,locale,themes} $(BUILD_DIST)/libgtk-3-common/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
 
 	# gtk+3.mk Prep libgtk-3-dev
+	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/pkgconfig/{gtk+,gtk+-unix-print,gtk+-x11,gdk-x11,gdk}-3.0.pc $(BUILD_DIST)/libgtk-3-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/pkgconfig
+	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/libg{d,t}k-3.{dylib,a} $(BUILD_DIST)/libgtk-3-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include $(BUILD_DIST)/libgtk-3-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/immodules/im-*.a $(BUILD_DIST)/libgtk-3-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/immodules
 	cp -a $(BUILD_STAGE)/gtk+3/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/printbackends/libprintbackend-{cups,file,lpr}.a $(BUILD_DIST)/libgtk-3-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/gtk-3.0/3.0.0/printbackends

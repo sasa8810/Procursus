@@ -30,7 +30,7 @@ garcon-package: garcon-stage
 	rm -rf $(BUILD_DIST)/libgarcon-{1-0,1-dev,common,gtk3-1-0,gtk3-1-dev}
 	mkdir -p $(BUILD_DIST)/libgarcon-{1-0,1-dev,gtk3-1-0,gtk3-1-dev}/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 	mkdir -p $(BUILD_DIST)/libgarcon-{common,1-dev}/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
-	mkdir -p $(BUILD_DIST)/libgarcon-{gtk3-,}1-dev/{include,lib/pkgconfig}
+	mkdir -p $(BUILD_DIST)/libgarcon-{gtk3-,}1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/{include,lib/pkgconfig}
 
 	# garcon.mk Prep libgarcon-common
 	cp -a $(BUILD_STAGE)/garcon/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/{icons,locale,desktop-directories} $(BUILD_DIST)/libgarcon-common/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share

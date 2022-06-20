@@ -37,6 +37,7 @@ tumbler-package: tumbler-stage
 	mkdir -p $(BUILD_DIST)/libtumbler-1-dev/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 	mkdir -p $(BUILD_DIST)/tumbler/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/tumbler-1/plugins/cache
 	mkdir -p $(BUILD_DIST)/tumbler-common/$(MEMO_PREFIX){,$(MEMO_SUB_PREFIX)/share}
+	mkdir -p $(BUILD_DIST)/libtumbler-1-0/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib
 
 	# tumbler.mk Prep tumbler
 	cp -a $(BUILD_STAGE)/tumbler/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/tumbler-1/tumblerd $(BUILD_DIST)/tumbler/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/tumbler-1
