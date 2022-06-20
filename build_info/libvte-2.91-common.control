@@ -1,0 +1,15 @@
+Package: libvte-2.91-common
+Version: @DEB_VTE_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Section: Libraries
+Priority: optional
+Homepage: https://wiki.gnome.org/Apps/Terminal/VTE
+Description: Terminal emulator widget for GTK+ 3.0 - common files
+ The VTE library provides a terminal emulator widget VteTerminal for
+ applications using the GTK+ toolkit. It also provides the VtePTY object
+ containing functions for starting a new process on a new
+ pseudo-terminal and for manipulating pseudo-terminals.
+ .
+ This package contains internationalization files for the VTE library
+ and common files for the GTK+ 3.x version.
