@@ -14,7 +14,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xfdesktop/.build_complete),)
 xfdesktop:
 	@echo "Using previously built xfdesktop."
 else
-xfdesktop: xfdesktop-setup libx11 exo gtk+3 libxfce4ui libxfce4util gettext pango cairo freetype fontconfig garcon
+xfdesktop: xfdesktop-setup libx11 exo gtk+3 libxfce4ui libxfce4util gettext pango cairo freetype fontconfig garcon glib2.0 libsm gdk-pixbuf libwnck atk
 	cd $(BUILD_WORK)/xfdesktop && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \

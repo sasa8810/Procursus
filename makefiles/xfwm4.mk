@@ -14,7 +14,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xfwm4/.build_complete),)
 xfwm4:
 	@echo "Using previously built xfwm4."
 else
-xfwm4: xfwm4-setup libx11 libxau libxmu xorgproto xxhash
+xfwm4: xfwm4-setup libx11 libxfce4util libxfce4ui libwnck exo libxres librandr libxinerama libepoxy gtk+3 xfconf atk cairo pango libxext gettext glib2.0 harfbuzz
 	cd $(BUILD_WORK)/xfwm4 && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
@@ -24,7 +24,7 @@ xfwm4: xfwm4-setup libx11 libxau libxmu xorgproto xxhash
 	+$(MAKE) -C $(BUILD_WORK)/xfwm4
 	+$(MAKE) -C $(BUILD_WORK)/xfwm4 install \
 		DESTDIR=$(BUILD_STAGE)/xfwm4
-	$(call AFTER_BUILD,copy)
+	$(call AFTER_BUILD)
 endif
 
 xfwm4-package: xfwm4-stage
