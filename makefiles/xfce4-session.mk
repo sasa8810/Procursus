@@ -15,7 +15,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xfce4-session/.build_complete),)
 xfce4-session:
 	@echo "Using previously built xfce4-session."
 else
-xfce4-session: xfce4-session-setup libx11 x11-xserver-utils libice xfconf
+xfce4-session: xfce4-session-setup libx11 x11-xserver-utils libice xfconf libsm harfbuzz cairo gtk+3 glib2.0 atk libxfce4ui libxfce4util gdk-pixbuf
 	cd $(BUILD_WORK)/xfce4-session && ./configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
