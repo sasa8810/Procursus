@@ -59,6 +59,6 @@ libgsf-package: libgsf-stage
 	$(call PACK,libgsf-bin,DEB_LIBGSF_V)
 
 	# libgsf.mk Build cleanup
-	mkdir -p $(BUILD_DIST)/libgsf-{1-{114,common,dev},bin}
+	rm -rf $(BUILD_DIST)/libgsf-{1-{114,common,dev},bin}
 
 .PHONY: libgsf libgsf-package
