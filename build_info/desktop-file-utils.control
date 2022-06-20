@@ -1,0 +1,13 @@
+Package: desktop-file-utils
+Version: @DEB_DESKTOP_FILE_UTILS_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libglib2.0-0 (>= 2.49.3), libintl8
+Section: Development
+Priority: optional
+Homepage: http://www.freedesktop.org/wiki/Software/desktop-file-utils
+Description: Utilities for .desktop files
+ Some utilities to make dealing with .desktop files easier:
+  * update-desktop-database -- update the desktop-MIME mapping
+  * desktop-file-validate -- validate a desktop file
+  * desktop-file-install -- install a desktop file, munging en route.
