@@ -1,0 +1,21 @@
+Package: xarchiver
+Version: @DEB_XARCHIVER_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.35.9), libgtk-3-0 (>= 3.0.0), libintl8
+Recommends: bzip2, p7zip-full | p7zip, unzip, xdg-utils, xz-utils
+Suggests: arj, binutils, cpio, lbzip2, lhasa, liblz4-tool, lrzip, lzip, lzop, ncompress, pbzip2, pigz, plzip, rar, unar, zip, zstd
+Section: X11
+Priority: optional
+Homepage: https://github.com/ib/xarchiver
+Description:  GTK+ frontend for most used compression formats
+ Xarchiver is a lightweight desktop independent GTK+ frontend for manipulating
+ xz, 7z, lzma, arj, bzip2, gzip, rar, tar, zip, rpm, lz4, compress, zstd, lzip,
+ lrzip, lzop, lha, ar files including the deb format and self-extracting
+ exe files, if they were internally compressed with either 7zip, arj, lha, rar
+ or zip. Multi-threading tools such as lbzip2, pbzip2, pigz and plzip can be
+ used as replacements for their respective counterparts.
+ .
+ Xarchiver allows you to create archives and add, extract, and delete files
+ from them. Password protected archives in the arj, 7z, rar, zip and lrzip
+ formats are supported.

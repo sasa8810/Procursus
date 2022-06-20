@@ -55,6 +55,7 @@ libxfce4ui-package: libxfce4ui-stage
 	cp -a $(BUILD_STAGE)/libxfce4ui/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/locale $(BUILD_DIST)/libxfce4ui-common/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
 
 	# libxfce4ui.mk Prep libxfce4ui-utils
+	cp -a $(BUILD_STAGE)/libxfce4ui/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin $(BUILD_DIST)/libxfce4ui-utils/$(MEMO_PREFIX$)$(MEMO_SUB_PREFIX)
 	cp -a $(BUILD_STAGE)/libxfce4ui/$(MEMO_PREFIX)/etc $(BUILD_DIST)/libxfce4ui-common/$(MEMO_PREFIX)
 	cp -a $(BUILD_STAGE)/libxfce4ui/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/{locale,applications} $(BUILD_DIST)/libxfce4ui-common/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
 

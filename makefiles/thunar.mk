@@ -38,7 +38,6 @@ thunar-package: thunar-stage
 	# thunar.mk Prep thunar
 	cp -a $(BUILD_STAGE)/thunar/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin $(BUILD_DIST)/thunar/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)
 	cp -a $(BUILD_STAGE)/thunar/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/{metainfo,polkit-1,applications,man} $(BUILD_DIST)/thunar/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share
-	$(LN_SR) $(BUILD_DIST)/thunar/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/{t,T}hunar
 	$(LN_SR) $(BUILD_DIST)/thunar/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man1/{t,T}hunar.1$(MEMO_MANPAGE_SUFFIX)
 
 	# thunar.mk Prep thunar-data

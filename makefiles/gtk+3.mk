@@ -25,7 +25,7 @@ ifneq ($(wildcard $(BUILD_WORK)/gtk+3/.build_complete),)
 gtk+3:
 	@echo "Using previously built gtk+3."
 else
-gtk+3: gtk+3-setup libx11 libxau libxmu xorgproto xxhash libepoxy at-spi2-atk pango gdk-pixbuf hicolor-icon-theme glib2.0 gettext libxdamage libxfixes libxinerama libxrandr libffi cairo fontconfig gdk-pixbuf libxext atk freetype
+gtk+3: gtk+3-setup libx11 libxau libxmu xorgproto xxhash libepoxy at-spi2-atk pango gdk-pixbuf hicolor-icon-theme glib2.0 gettext libxdamage libxfixes libxinerama libxrandr libffi cairo fontconfig gdk-pixbuf libxext atk freetype libxinerama
 	cd $(BUILD_WORK)/gtk+3/build && ../configure -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--with-x \
