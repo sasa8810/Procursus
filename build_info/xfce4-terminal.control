@@ -1,0 +1,13 @@
+Package: xfce4-terminal
+Version: @DEB_XFCE4-TERMINAL_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: exo-utils, libcairo2 (>= 1.2.4), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.21.5), libpango-1.0-0 (>= 1.14.0), libutempter0 (>= 1.1.5), libvte-2.91-0 (>= 0.51.90), libx11-6, libxfce4ui-2-0 (>= 4.11.0), libxfce4util7 (>= 4.9.0), libxfconf-0-3 (>= 4.6.0)
+Provides: x-terminal-emulator
+Section: XFCE
+Priority: optional
+Homepage: https://docs.xfce.org/apps/terminal/start
+Description: Xfce terminal emulator
+ This package contains Terminal, which is a lightweight and easy to use
+ terminal emulator for X11. It was created to fit nicely into the Xfce
+ desktop environment, but it also fits nice with other environments.
