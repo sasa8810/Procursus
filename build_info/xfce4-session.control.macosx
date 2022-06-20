@@ -2,7 +2,10 @@ Package: xfce4-session
 Version: @DEB_XFCE4-SESSION_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
-Depends: libxfce4ui
+Provides: x-session-manager
+Depends: xfce4-settings (>= 4.10.0), xfconf, x11-xserver-utils, libatk1.0-0 (>= 1.12.4), libc6 (>= 2.4), libcairo2 (>= 1.2.4), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.19.12), libice6 (>= 1.0.0), libpango-1.0-0 (>= 1.14.0), libpolkit-gobject-1-0 (>= 0.101), libsm6, libwnck-3-0 (>= 2.91.6), libx11-6, libxfce4ui-2-0 (>= 4.15.1), libxfce4util7 (>= 4.15.3), libxfconf-0-3 (>= 4.6.0)
+Recommends: default-dbus-session-bus | dbus-session-bus, default-logind | logind, light-locker, systemd-sysv, upower, xfdesktop4, xfwm4
+Suggests: fortunes-mod, sudo
 Section: XFCE
 Priority: optional
 Homepage: https://docs.xfce.org/xfce/xfce4-session/start
