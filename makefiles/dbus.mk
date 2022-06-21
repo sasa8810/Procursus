@@ -3,7 +3,7 @@ $(error Use the main Makefile)
 endif
 
 SUBPROJECTS  += dbus
-DBUS_VERSION := 1.12.20
+DBUS_VERSION := 1.14.0
 DEB_DBUS_V   ?= $(DBUS_VERSION)
 
 ifeq (,$(findstring darwin,$(MEMO_TARGET)))
@@ -11,8 +11,9 @@ DBUS_PROFILE := /etc/profile.d
 endif
 
 dbus-setup: setup
-	wget -q -nc -P $(BUILD_SOURCE) https://dbus.freedesktop.org/releases/dbus/dbus-$(DBUS_VERSION).tar.gz
-	$(call EXTRACT_TAR,dbus-$(DBUS_VERSION).tar.gz,dbus-$(DBUS_VERSION),dbus)
+	wget -q -nc -P $(BUILD_SOURCE) https://dbus.freedesktop.org/releases/dbus/dbus-$(DBUS_VERSION).tar.xz{,.asc}
+	$(call PGP_VERIFY,dbus-$(DBUS_VERSION).tar.xz,asc)
+	$(call EXTRACT_TAR,dbus-$(DBUS_VERSION).tar.xz,dbus-$(DBUS_VERSION),dbus)
 	$(call DO_PATCH,dbus,dbus,-p1)
 
 ifneq ($(wildcard $(BUILD_WORK)/dbus/.build_complete),)

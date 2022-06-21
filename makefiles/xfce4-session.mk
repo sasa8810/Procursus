@@ -23,7 +23,7 @@ xfce4-session: xfce4-session-setup libx11 x11-xserver-utils libice xfconf libsm 
 		--x-includes=$(BUILD_BASE)/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include \
 		--disable-polkit \
 		--with-backend=darwin \
-		--enable-debug=no \
+		--enable-debug=yes \
 		ac_cv_func_malloc_0_nonnull=yes \
 		ac_cv_func_realloc_0_nonnull=yes \
 		ac_cv_path_ICEAUTH=$(BUILD_STAGE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/iceauth
