@@ -13,7 +13,7 @@ xfconf-setup: setup
 
 ifneq ($(call HAS_COMMAND,gdbus-codegen),1)
 libxfce4util:
-        @echo "Install libglib2.0-dev-bin before building"
+	@echo "Install libglib2.0-dev-bin before building"
 
 else ifneq ($(wildcard $(BUILD_WORK)/xfconf/.build_complete),)
 xfconf:
