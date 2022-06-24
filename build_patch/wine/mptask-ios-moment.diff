@@ -1,0 +1,46 @@
+diff -urN a/dlls/ntdll/unix/loader.c f/dlls/ntdll/unix/loader.c
+--- a/dlls/ntdll/unix/loader.c	2022-06-18 03:52:59.000000000 +0800
++++ f/dlls/ntdll/unix/loader.c	2022-06-24 13:59:57.000000000 +0800
+@@ -2328,7 +2328,7 @@
+     pthread_attr_destroy( &attr );
+ }
+ 
+-
++#include <TargetConditionals.h>
+ /***********************************************************************
+  *           apple_main_thread
+  *
+@@ -2347,8 +2347,9 @@
+     /* Multi-processing Services can get confused about the main thread if the
+      * first time it's used is on a secondary thread.  Use it here to make sure
+      * that doesn't happen. */
++#if TARGET_OS_OSX
+     MPTaskIsPreemptive(MPCurrentTaskID());
+-
++#endif
+     /* Give ourselves the best chance of having the distributed notification
+      * center scheduled on this thread's run loop.  In theory, it's scheduled
+      * in the first thread to ask for it. */
+diff -urN a/libs/wine/loader.c f/libs/wine/loader.c
+--- a/libs/wine/loader.c	2022-06-18 03:52:59.000000000 +0800
++++ f/libs/wine/loader.c	2022-06-24 13:59:47.000000000 +0800
+@@ -890,7 +890,7 @@
+         CFRunLoopStop( CFRunLoopGetCurrent() );
+ }
+ 
+-
++#include <TargetConditionals.h>
+ /***********************************************************************
+  *           apple_main_thread
+  *
+@@ -913,8 +913,9 @@
+     /* Multi-processing Services can get confused about the main thread if the
+      * first time it's used is on a secondary thread.  Use it here to make sure
+      * that doesn't happen. */
++#if TARGET_OS_OSX
+     MPTaskIsPreemptive(MPCurrentTaskID());
+-
++#endif
+     /* Give ourselves the best chance of having the distributed notification
+      * center scheduled on this thread's run loop.  In theory, it's scheduled
+      * in the first thread to ask for it. */

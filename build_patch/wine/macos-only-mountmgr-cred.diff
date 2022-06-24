@@ -1,0 +1,13 @@
+diff -urN a/dlls/mountmgr.sys/cred.c c/dlls/mountmgr.sys/cred.c
+--- a/dlls/mountmgr.sys/cred.c	2022-06-18 03:52:59.000000000 +0800
++++ c/dlls/mountmgr.sys/cred.c	2022-06-24 01:38:12.000000000 +0800
+@@ -44,7 +44,8 @@
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(mountmgr);
+ 
+-#ifdef __APPLE__
++#include <TargetConditionals.h>
++#if TARGET_OS_OSX
+ 
+ #define TICKSPERSEC        10000000
+ #define SECSPERDAY         86400

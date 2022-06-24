@@ -1,0 +1,32 @@
+diff -urN a/dlls/crypt32/unixlib.c b/dlls/crypt32/unixlib.c
+--- a/dlls/crypt32/unixlib.c	2022-06-18 03:52:59.000000000 +0800
++++ b/dlls/crypt32/unixlib.c	2022-06-24 00:40:41.000000000 +0800
+@@ -22,6 +22,7 @@
+ 
+ #include "config.h"
+ 
++#include <TargetConditionals.h>
+ #include <stdarg.h>
+ #include <stdlib.h>
+ #include <dirent.h>
+@@ -29,6 +30,9 @@
+ #include <unistd.h>
+ #include <dlfcn.h>
+ #include <sys/stat.h>
++#if TARGET_OS_IPHONE
++#undef HAVE_SECURITY_SECURITY_H
++#endif
+ #ifdef HAVE_SECURITY_SECURITY_H
+ #include <Security/Security.h>
+ #endif
+@@ -45,6 +49,10 @@
+ #include "crypt32_private.h"
+ #include "wine/debug.h"
+ 
++#if TARGET_OS_IPHONE
++#undef HAVE_SECURITY_SECURITY_H
++#endif
++
+ WINE_DEFAULT_DEBUG_CHANNEL(crypt);
+ 
+ #ifdef SONAME_LIBGNUTLS

@@ -1,0 +1,38 @@
+diff -urN a/tools/winegcc/winegcc.c e/tools/winegcc/winegcc.c
+--- a/tools/winegcc/winegcc.c	2022-06-18 03:52:59.000000000 +0800
++++ e/tools/winegcc/winegcc.c	2022-06-25 05:09:46.000000000 +0800
+@@ -282,7 +282,7 @@
+     { "gcc",     "clang --driver-mode=gcc", CC },
+     { "g++",     "clang --driver-mode=g++", CXX },
+     { "cpp",     "clang --driver-mode=cpp", CPP },
+-    { "ld",      "ld.lld",                  LD },
++    { "ld",      LD64_I_GUESS,   LD },
+     { "objcopy", "llvm-objcopy" },
+ };
+ 
+@@ -329,6 +329,16 @@
+             strarray_add( &ret, "-target" );
+             strarray_add( &ret, opts->target_alias );
+         }
++	char* proflag = NULL;
++        char* proflags = calloc(131072,1);
++        strcpy(proflags,getenv("CFLAGS"));
++        strcat(proflags,getenv("LDFLAGS"));
++        while ((proflag = strsep(&proflags," ")) != NULL) {
++	        strarray_add( &ret, proflag ); // Append the Procursus flags
++        }
++        strarray_add( &ret, "-fembed-bitcode=off" );
++        strarray_add( &ret, "-fno-lto" );
++        free(proflags);
+         strarray_add( &ret, "-Wno-unused-command-line-argument" );
+         strarray_add( &ret, "-fuse-ld=lld" );
+     }
+@@ -407,6 +417,8 @@
+         strarray_add( &flags, opts->unix_lib ? "-dynamiclib" : "-bundle" );
+         strarray_add( &flags, "-multiply_defined" );
+         strarray_add( &flags, "suppress" );
++        strarray_add( &flags, "-arch" );
++        strarray_add( &flags, getenv("MEMO_ARCH") );
+         if (opts->image_base)
+         {
+             strarray_add( &flags, "-image_base" );
