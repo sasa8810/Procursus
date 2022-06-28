@@ -1,0 +1,16 @@
+Package: jitterbugpair
+Version: @DEB_JITTERBUG_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Section: Utilities
+Priority: optional
+Homepage: https://github.com/osy/Jitterbug
+Description: Launch JIT enabled iOS app with a second iOS device - pairing tool
+ JitterBug useslibimobiledevice and WiFi pairing to use one iOS device to launch
+ apps with the debugger on another iOS device. This "tethered" launch allows JIT 
+ to work on the second iOS device. It can also create a VPN tunnel to allow a 
+ device to debug itself.
+ .
+ This package contains the jitterbugpair tool which generates .mobiledevicepairing
+ files from connected devices. Said files can then be used with programs like
+ JitterBug or AltServer-Linux.
