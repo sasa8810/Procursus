@@ -21,7 +21,11 @@ gtk+3-setup: setup
 	$(call DO_PATCH,gtk+,gtk+3,-p1)
 	mkdir -p $(BUILD_WORK)/gtk+3/build
 
-ifneq ($(wildcard $(BUILD_WORK)/gtk+3/.build_complete),)
+ifneq ($(call HAS_COMMAND,glib-compile-schemas),1)
+gtk+3:
+	$(error Install libglib2.o-dev-bin)
+
+else ifneq ($(wildcard $(BUILD_WORK)/gtk+3/.build_complete),)
 gtk+3:
 	@echo "Using previously built gtk+3."
 else

@@ -17,7 +17,7 @@ wine-setup: setup
 	$(call DO_PATCH,wine-tools,../../native/wine,-p1)
 
 ifneq ($(call HAS_COMMAND,lld-link),1)
-neovim:
+wine:
 	$(error lld-link is required to build wine)
 else ifneq ($(wildcard $(BUILD_WORK)/wine/.build_complete),)
 wine:

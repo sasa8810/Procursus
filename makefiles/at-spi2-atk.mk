@@ -30,10 +30,9 @@ ifneq ($(wildcard $(BUILD_WORK)/at-spi2-atk/.build_complete),)
 at-spi2-atk:
 	@echo "Using previously built at-spi2-atk."
 else
-at-spi2-atk: at-spi2-atk-setup atk at-spi2-atk dbus glib2.0
+at-spi2-atk: at-spi2-atk-setup atk dbus glib2.0 libxtst
 	cd $(BUILD_WORK)/at-spi2-atk/build && meson \
 	--cross-file cross.txt \
-	-Dintrospection=false \
 	..
 	+ninja -C $(BUILD_WORK)/at-spi2-atk/build
 	+DESTDIR="$(BUILD_STAGE)/at-spi2-atk" ninja -C $(BUILD_WORK)/at-spi2-atk/build install
