@@ -3,14 +3,14 @@ $(error Use the main Makefile)
 endif
 
 SUBPROJECTS         += xorg-server
-XORG-SERVER_VERSION := 1.20.11
+XORG-SERVER_VERSION := 21.1.3
 DEB_XORG-SERVER_V   ?= $(XORG-SERVER_VERSION)
 
 xorg-server-setup: setup
 	wget -q -nc -P $(BUILD_SOURCE) https://www.x.org/archive//individual/xserver/xorg-server-$(XORG-SERVER_VERSION).tar.gz{,.sig}
 	$(call PGP_VERIFY,xorg-server-$(XORG-SERVER_VERSION).tar.gz)
 	$(call EXTRACT_TAR,xorg-server-$(XORG-SERVER_VERSION).tar.gz,xorg-server-$(XORG-SERVER_VERSION),xorg-server)
-	$(call DO_PATCH,xorg-server,xorg-server,-p1)
+	#$(call DO_PATCH,xorg-server,xorg-server,-p1)
 	sed -i 's/__APPLE__/__PEAR__/' $(BUILD_WORK)/xorg-server/miext/rootless/rootlessWindow.c
 
 #   --enable-glamor needs GBM and libepoxy
@@ -19,7 +19,7 @@ ifneq ($(wildcard $(BUILD_WORK)/xorg-server/.build_complete),)
 xorg-server:
 	@echo "Using previously built xorg-server."
 else
-xorg-server: xorg-server-setup libmd libx11 libxau libxmu xorgproto font-util libpixman libpng16 mesa libxfont2 libxkbfile libxdamage libxt libxpm libxaw libxres libxext xcb-util xcb-util-renderutil xcb-util-image xcb-util-wm xcb-util-keysyms libdmx libxdmcp libxfixes libxi libxrender libxtst
+xorg-server: xorg-server-setup libmd libx11 libxau libxmu xorgproto font-util libpixman libpng16 mesa libxfont2 libxkbfile libxdamage libxt libxpm libxaw libxres libxext xcb-util xcb-util-renderutil xcb-util-image xcb-util-wm xcb-util-keysyms libdmx libxdmcp libxfixes libxi libxrender libxtst libxxf86dga libxcomposite libxv libxvmc
 	cd $(BUILD_WORK)/xorg-server && ./autogen.sh -C \
 		$(DEFAULT_CONFIGURE_FLAGS) \
 		--enable-xorg \
