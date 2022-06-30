@@ -3,6 +3,7 @@ Version: @DEB_LIBXCVT_V@
 Architecture: @DEB_ARCH@
 Maintainer: @DEB_MAINTAINER@
 Depends: libxcvt0 (>= @DEB_LIBXCVT_V@)
+Replaces: xserver-xorg-core (<< 21)
 Section: X11
 Priority: optional
 Description: VESA CVT standard timing modelines generator
