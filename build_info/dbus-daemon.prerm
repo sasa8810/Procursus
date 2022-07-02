@@ -4,7 +4,7 @@ set -e
 
 if [ $1 = "remove" ]; then
 	pw user del -n messagebus 2&>1 /dev/null || true
-	@MEMO_LAUNCHCTL_PREFIX@/bin/launchctl unload @MEMO_PREFIX@/Library/LaunchDaemons/org.freedesktop.dbus-session.plist
+	@MEMO_LAUNCHCTL_PREFIX@/bin/launchctl unload @MEMO_PREFIX@/Library/LaunchAgents/org.freedesktop.dbus-session.plist
 fi
 
 exit 0

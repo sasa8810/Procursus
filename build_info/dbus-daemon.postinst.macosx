@@ -6,13 +6,13 @@ if [ "$1" = configure ]; then
     mkdir -p @MEMO_PREFIX@/var/lib/dbus
     pw user add -n messagebus -d /var/empty -s /usr/sbin/nologin >/dev/null 2>&1 || true
     @MEMO_PREFIX@@MEMO_SUB_PREFIX@/bin/dbus-uuidgen "--ensure=@MEMO_PREFIX@/var/lib/dbus/machine-id"
-    @MEMO_LAUNCHCTL_PREFIX@/bin/launchctl load @MEMO_PREFIX@/Library/LaunchDaemons/org.freedesktop.dbus-session.plist
+    @MEMO_LAUNCHCTL_PREFIX@/bin/launchctl load @MEMO_PREFIX@/Library/LaunchAgents/org.freedesktop.dbus-session.plist
     chmod 777 $(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET | cut -f-5 -d/)
 fi
 
 if [ $1 = upgrade ]; then
-    @MEMO_LAUNCHCTL_PREFIX@/bin/launchctl unload @MEMO_PREFIX@/Library/LaunchDaemons/org.freedesktop.dbus-session.plist
-    @MEMO_LAUNCHCTL_PREFIX@/bin/launchctl load @MEMO_PREFIX@/Library/LaunchDaemons/org.freedesktop.dbus-session.plist
+    @MEMO_LAUNCHCTL_PREFIX@/bin/launchctl unload @MEMO_PREFIX@/Library/LaunchAgents/org.freedesktop.dbus-session.plist
+    @MEMO_LAUNCHCTL_PREFIX@/bin/launchctl load @MEMO_PREFIX@/Library/LaunchAgents/org.freedesktop.dbus-session.plist
 fi
 
 exit 0
