@@ -9,7 +9,7 @@ DEB_ANDROID_TOOLS_V   ?= $(ANDROID_TOOLS_VERSION)
 # XXX: It looks like the build system does not build shared libraries.
 
 android-tools-setup: setup
-	wget -q -nc -P$(BUILD_SOURCE) https://github.com/nmeum/android-tools/releases/download/31.0.3p1/android-tools-31.0.3p1.tar.xz
+	$(call DOWNLOAD_FILES,$(BUILD_SOURCE),https://github.com/nmeum/android-tools/releases/download/31.0.3p1/android-tools-31.0.3p1.tar.xz)
 	$(call EXTRACT_TAR,android-tools-$(ANDROID_TOOLS_VERSION).tar.xz,android-tools-$(ANDROID_TOOLS_VERSION),android-tools)
 	$(call DO_PATCH,android-tools,android-tools,-p1)
 	mkdir -p $(BUILD_WORK)/android-tools/build
