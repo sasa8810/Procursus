@@ -1,0 +1,13 @@
+Package: libusb-0.1-4
+Version: @DEB_LIBUSB_COMPAT_0.1_V@
+Architecture: @DEB_ARCH@
+Maintainer: @DEB_MAINTAINER@
+Depends: libusb-1.0-0
+Section: Libraries
+Priority: optional
+Homepage: https://github.com/libusb/libusb-compat-0.1
+Description: userspace USB programming library
+ Library for programming USB applications without the knowledge of IOKit 
+ internals.
+ ,
+ This package contains what you need to run programs that use this library.

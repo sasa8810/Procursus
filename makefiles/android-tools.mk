@@ -24,7 +24,7 @@ else ifneq ($(wildcard $(BUILD_WORK)/android-tools/.build_complete),)
 android-tools:
 	@echo "Using previously built android-tools."
 else
-android-tools: android-tools-setup libusb pcre2 googletest libprotobuf brotli zstd lz4
+android-tools: android-tools-setup libusb pcre2 googletest libprotobuf brotli zstd lz4 libusb libusb-compat-0.1
 	cd $(BUILD_WORK)/android-tools/build && cmake . \
 		$(DEFAULT_CMAKE_FLAGS) \
 		-DCMAKE_CXX_FLAGS='$(CXXFLAGS) $(PLATFORM_VERSION_MIN) -D_DARWIN_C_SOURCE -D__DARWIN_C_LEVEL=__DARWIN_C_FULL -std=gnu++20' \
@@ -64,8 +64,8 @@ android-tools-package: android-tools-stage
 	cp -a $(BUILD_STAGE)/android-tools/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/{lpadd,lpdump,lpflash,lpmake,lpunpack,mke2fs.android} $(BUILD_DIST)/android-sdk-libsparse-utils/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin
 
 	# android-tools.mk Sign
-	$(call SIGN,adb,general.xml)
-	$(call SIGN,fastboot,general.xml)
+	$(call SIGN,adb,usb.xml)
+	$(call SIGN,fastboot,usb.xml)
 	$(call SIGN,android-sdk-libsparse-utils,general.xml)
 	$(call SIGN,android-sdk-platform-tools,dd.xml)
 

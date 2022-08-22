@@ -1,6 +1,6 @@
 diff -urN a/vendor/CMakeLists.adb.txt b/vendor/CMakeLists.adb.txt
 --- a/vendor/CMakeLists.adb.txt	2022-07-14 00:44:44.000000000 +0800
-+++ b/vendor/CMakeLists.adb.txt	2022-08-22 13:04:42.000000000 +0800
++++ b/vendor/CMakeLists.adb.txt	2022-08-22 15:53:53.000000000 +0800
 @@ -24,7 +24,7 @@
  	adb/client/main.cpp
  	adb/client/pairing/pairing_client.cpp
@@ -10,9 +10,17 @@ diff -urN a/vendor/CMakeLists.adb.txt b/vendor/CMakeLists.adb.txt
  	adb/pairing_auth/aes_128_gcm.cpp
  	adb/pairing_auth/pairing_auth.cpp
  	adb/pairing_connection/pairing_connection.cpp
+@@ -192,6 +192,7 @@
+ 	brotlienc
+ 	lz4
+ 	Threads::Threads
++	usb
+ 	usb-1.0
+ 	z
+ 	zstd)
 diff -urN a/vendor/CMakeLists.fastboot.txt b/vendor/CMakeLists.fastboot.txt
 --- a/vendor/CMakeLists.fastboot.txt	2022-07-14 00:44:44.000000000 +0800
-+++ b/vendor/CMakeLists.fastboot.txt	2022-08-22 13:04:42.000000000 +0800
++++ b/vendor/CMakeLists.fastboot.txt	2022-08-22 15:58:07.000000000 +0800
 @@ -32,7 +32,7 @@
  	extras/ext4_utils/ext4_sb.cpp)
  
@@ -105,7 +113,7 @@ diff -urN a/vendor/CMakeLists.fastboot.txt b/vendor/CMakeLists.fastboot.txt
  target_link_libraries(fastboot
  	libsparse libzip libcutils liblog libfsmgr libutil
 -	libbase libext4 libselinux libsepol libdiagnoseusb crypto
-+	libbase libext4 libdiagnoseusb crypto
++	libbase libext4 libdiagnoseusb crypto usb-1.0
  	z pcre2-8 Threads::Threads dl)
 diff -urN a/vendor/CMakeLists.mke2fs.txt b/vendor/CMakeLists.mke2fs.txt
 --- a/vendor/CMakeLists.mke2fs.txt	2022-07-14 00:44:44.000000000 +0800
