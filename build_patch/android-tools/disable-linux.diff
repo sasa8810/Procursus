@@ -1,6 +1,6 @@
 diff -urN a/vendor/CMakeLists.adb.txt b/vendor/CMakeLists.adb.txt
---- a/vendor/CMakeLists.adb.txt	2021-11-01 01:35:23.000000000 +0800
-+++ b/vendor/CMakeLists.adb.txt	2022-05-23 18:15:53.000000000 +0800
+--- a/vendor/CMakeLists.adb.txt	2022-07-14 00:44:44.000000000 +0800
++++ b/vendor/CMakeLists.adb.txt	2022-08-22 13:04:42.000000000 +0800
 @@ -24,7 +24,7 @@
  	adb/client/main.cpp
  	adb/client/pairing/pairing_client.cpp
@@ -11,8 +11,8 @@ diff -urN a/vendor/CMakeLists.adb.txt b/vendor/CMakeLists.adb.txt
  	adb/pairing_auth/pairing_auth.cpp
  	adb/pairing_connection/pairing_connection.cpp
 diff -urN a/vendor/CMakeLists.fastboot.txt b/vendor/CMakeLists.fastboot.txt
---- a/vendor/CMakeLists.fastboot.txt	2021-11-01 01:35:23.000000000 +0800
-+++ b/vendor/CMakeLists.fastboot.txt	2022-05-23 18:15:31.000000000 +0800
+--- a/vendor/CMakeLists.fastboot.txt	2022-07-14 00:44:44.000000000 +0800
++++ b/vendor/CMakeLists.fastboot.txt	2022-08-22 13:04:42.000000000 +0800
 @@ -32,7 +32,7 @@
  	extras/ext4_utils/ext4_sb.cpp)
  
@@ -106,4 +106,46 @@ diff -urN a/vendor/CMakeLists.fastboot.txt b/vendor/CMakeLists.fastboot.txt
  	libsparse libzip libcutils liblog libfsmgr libutil
 -	libbase libext4 libselinux libsepol libdiagnoseusb crypto
 +	libbase libext4 libdiagnoseusb crypto
- 	z pcre2-8 pthread dl)
+ 	z pcre2-8 Threads::Threads dl)
+diff -urN a/vendor/CMakeLists.mke2fs.txt b/vendor/CMakeLists.mke2fs.txt
+--- a/vendor/CMakeLists.mke2fs.txt	2022-07-14 00:44:44.000000000 +0800
++++ b/vendor/CMakeLists.mke2fs.txt	2022-08-22 13:06:10.000000000 +0800
+@@ -117,27 +117,9 @@
+ target_include_directories("${ANDROID_MKE2FS_NAME}" PRIVATE
+ 	e2fsprogs/lib)
+ 
+-add_executable(e2fsdroid
+-	e2fsprogs/contrib/android/e2fsdroid.c
+-	e2fsprogs/contrib/android/basefs_allocator.c
+-	e2fsprogs/contrib/android/block_range.c
+-	e2fsprogs/contrib/android/base_fs.c
+-	e2fsprogs/contrib/android/fsmap.c
+-	e2fsprogs/contrib/android/block_list.c
+-	e2fsprogs/contrib/android/perms.c)
+-
+ include(CheckIncludeFile)
+ CHECK_INCLUDE_FILE("sys/types.h" HAVE_SYS_TYPES_H)
+ 
+-if(HAVE_SYS_TYPES_H)
+-	target_compile_definitions(e2fsdroid PUBLIC HAVE_SYS_TYPES_H)
+-endif(HAVE_SYS_TYPES_H)
+-
+-target_link_libraries(e2fsdroid
+-	libext2fs libsparse libzip libcutils liblog libutil libbase libselinux libsepol z pcre2-8 pthread)
+-target_include_directories(e2fsdroid PRIVATE
+-	e2fsprogs/lib e2fsprogs/lib/ext2fs selinux/libselinux/include core/libcutils/include e2fsprogs/misc)
+-
+ add_executable(ext2simg
+ 	e2fsprogs/contrib/android/ext2simg.c)
+ 
+diff -urN a/vendor/CMakeLists.txt b/vendor/CMakeLists.txt
+--- a/vendor/CMakeLists.txt	2022-08-06 20:04:45.000000000 +0800
++++ b/vendor/CMakeLists.txt	2022-08-22 13:05:28.000000000 +0800
+@@ -85,7 +85,6 @@
+ 	lpmake
+ 	lpunpack
+ 	simg2img
+-	e2fsdroid
+ 	ext2simg
+ 	DESTINATION bin)
+ 
