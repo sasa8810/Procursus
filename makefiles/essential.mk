@@ -3,6 +3,7 @@ $(error Use the main Makefile)
 endif
 
 ifeq (,$(findstring darwin,$(MEMO_TARGET)))
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 
 STRAPPROJECTS     += essential
 ESSENTIAL_VERSION := 0-5
@@ -25,3 +26,4 @@ essential-package: essential-stage
 .PHONY: essential essential-package
 
 endif # ($(MEMO_TARGET),darwin-\*)
+endif # ($(MEMO_TARGET),simulator-\*)
