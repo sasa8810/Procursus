@@ -10,6 +10,10 @@ endif
 UIKITTOOLS_VERSION := 2.1.6
 DEB_UIKITTOOLS_V   ?= $(UIKITTOOLS_VERSION)-1
 
+ifneq (,$(findstring iphonesimulator,$(MEMO_TARGET)))
+IPHONESIM-FLAGS := -Dthis_is_totally_iphoneos_trust_me_bro
+endif
+
 uikittools-setup: setup
 	$(call GITHUB_ARCHIVE,ProcursusTeam,uikittools-ng,$(UIKITTOOLS_VERSION),v$(UIKITTOOLS_VERSION))
 	$(call EXTRACT_TAR,uikittools-ng-$(UIKITTOOLS_VERSION).tar.gz,uikittools-ng-$(UIKITTOOLS_VERSION),uikittools)
@@ -27,12 +31,14 @@ uikittools: uikittools-setup gettext
 		PREFIX="$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)" \
 		LOCALEDIR="$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/locale" \
 		APP_PATH="$(MEMO_PREFIX)/Applications" \
+		CFLAGS="$(IPHONESIM-FLAGS) $(CFLAGS)" \
 		NLS=1
 	+$(MAKE) -C $(BUILD_WORK)/uikittools install \
 		PREFIX="$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)" \
 		LOCALEDIR="$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/locale" \
 		DESTDIR="$(BUILD_STAGE)/uikittools" \
 		APP_PATH="$(MEMO_PREFIX)/Applications" \
+		CFLAGS="$(IPHONESIM-FLAGS) $(CFLAGS)" \
 		NLS=1 \
 		$(UIKITTOOLS_MAKE_ARGS)
 	$(call AFTER_BUILD)
