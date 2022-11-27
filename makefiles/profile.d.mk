@@ -16,7 +16,14 @@ profile.d:
 	mkdir -p $(BUILD_STAGE)/profile.d/$(MEMO_PREFIX)/etc/profile.d
 	cp $(BUILD_MISC)/profile.d/{,z}profile $(BUILD_STAGE)/profile.d/$(MEMO_PREFIX)/etc
 	PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 	sed -i -e "s|@PATH@|$(shell printf "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games\n" | tr ':' '\n' | sed "p; s|^|$(MEMO_PREFIX)|" | tr '\n' ':' | sed 's|:$$|\n|')|" -e 's|@MEMO_PREFIX@|$(MEMO_PREFIX)|g' -e 's|@MEMO_SUB_PREFIX@|$(MEMO_SUB_PREFIX)|g' $(BUILD_STAGE)/profile.d/$(MEMO_PREFIX)/etc/{z,}profile
+else
+	# The simulator environment should not use host bins
+	SIMULATOR_PATH="$(MEMO_PREFIX)$(MEMO_SUB_PERFIX)/local/bin:$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/local/sbin:$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin:$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/sbin:$(MEMO_PREFIX)/bin:$(MEMO_PREFIX)/sbin:$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/X11:$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/games"; \
+	sed -i -e "s|@PATH@|$${SIMULATOR_PATH}|g" $(BUILD_STAGE)/profile.d/$(MEMO_PREFIX)/etc/{z,}profile
+	sed -i -e 's|@MEMO_PREFIX@|$(MEMO_PREFIX)|g' -e 's|@MEMO_SUB_PREFIX@|$(MEMO_SUB_PREFIX)|g' $(BUILD_STAGE)/profile.d/$(MEMO_PREFIX)/etc/{z,}profile
+endif
 	cp $(BUILD_MISC)/profile.d/terminal.sh $(BUILD_STAGE)/profile.d/$(MEMO_PREFIX)/etc/profile.d
 endif
 

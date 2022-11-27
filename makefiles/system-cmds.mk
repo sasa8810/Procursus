@@ -17,6 +17,10 @@ DEB_SYSTEM-CMDS_V   ?= $(SYSTEM-CMDS_VERSION)-2
 endif
 PWDARWIN_COMMIT     := 72ae45ce6c025bc2359035cfb941b177149e88ae
 
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
+LSMP := lsmp
+endif
+
 system-cmds-setup: setup libxcrypt
 	$(call GITHUB_ARCHIVE,apple-oss-distributions,system_cmds,$(SYSTEM-CMDS_VERSION),system_cmds-$(SYSTEM-CMDS_VERSION))
 ifeq ($(shell [ "$(CFVER_WHOLE)" -lt 1700 ] && echo 1),1)
@@ -40,6 +44,7 @@ endif
 	$(call DOWNLOAD_FILES,$(BUILD_WORK)/system-cmds/include, \
 		https://github.com/apple-oss-distributions/launchd/raw/launchd-328/launchd/src/reboot2.h)
 	sed -i 's|"/etc|"$(MEMO_PREFIX)/etc|' $(BUILD_WORK)/system-cmds/passwd.tproj/{file_,}passwd.c
+	sed -i -e 's/TARGET_OS_SIMULATOR/WHOISJOE/g' -e 's|/etc|$(MEMO_PREFIX)/etc|' $(BUILD_WORK)/system-cmds/passwd.tproj/{{file_,}passwd.c,passwd.h}
 	sed -i 's|#include <mach/i386/vm_param.h>|#include <mach/vm_param.h>|' $(BUILD_WORK)/system-cmds/memory_pressure.tproj/memory_pressure.c
 	# Allow placing kernels from [redacted] sources on rootless
 	sed -i 's|/System/Library/Kernels/kernel.development|$(MEMO_PREFIX)/Library/Kernels/kernel.development|' $(BUILD_WORK)/system-cmds/latency.tproj/latency.{1,c}
@@ -54,8 +59,10 @@ system-cmds: system-cmds-setup libxcrypt openpam libiosexec ncurses
 	done
 	rm -f $(BUILD_WORK)/system-cmds/passwd.tproj/{od,nis}_passwd.c
 	cd $(BUILD_WORK)/system-cmds && $(CC) $(CFLAGS) $(LDFLAGS) -o wait4path.x wait4path/*.c
+	cd $(BUILD_WORK)/system-cmds/reboot.tproj && mig -I$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include kextmanager.defs
+	cd $(BUILD_WORK)/system-cmds/shutdown.tproj && mig -I$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include kextmanager.defs
 	cd $(BUILD_WORK)/system-cmds; \
-	for tproj in ac accton arch at atrun cpuctl dmesg dynamic_pager fs_usage getconf getty hostinfo iostat latency login lskq memory_pressure mkfile newgrp purge pwd_mkdb reboot shutdown stackshot trace passwd sync sysctl vifs vipw zdump zic nologin taskpolicy lsmp sc_usage ltop; do \
+	for tproj in ac accton arch at atrun cpuctl dmesg dynamic_pager fs_usage getconf getty hostinfo iostat latency login lskq memory_pressure mkfile newgrp purge pwd_mkdb reboot shutdown stackshot trace passwd sync sysctl vifs vipw zdump zic nologin taskpolicy sc_usage ltop $(LSMP); do \
 		CFLAGS=; \
 		case $$tproj in \
 			arch) LDFLAGS="-framework CoreFoundation -framework Foundation -lobjc";; \
@@ -82,11 +89,16 @@ system-cmds: system-cmds-setup libxcrypt openpam libiosexec ncurses
 	cp -a $(BUILD_WORK)/system-cmds/{dmesg,dynamic_pager,nologin,reboot,shutdown} $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)/sbin
 	cp -a $(BUILD_WORK)/system-cmds/sync $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)/bin
 	cp -a $(BUILD_WORK)/system-cmds/{ac,accton,iostat,mkfile,pwd_mkdb,sysctl,taskpolicy,vifs,vipw,zdump,zic} $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/sbin
-	cp -a $(BUILD_WORK)/system-cmds/{arch,at,cpuctl,fs_usage,getconf,hostinfo,latency,login,lskq,lsmp,ltop,memory_pressure,newgrp,passwd,purge,sc_usage,stackshot,trace} $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin
+	cp -a $(BUILD_WORK)/system-cmds/{arch,at,cpuctl,fs_usage,getconf,hostinfo,latency,login,lskq,ltop,memory_pressure,newgrp,passwd,purge,sc_usage,stackshot,trace} $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin
 	cp -a $(BUILD_WORK)/system-cmds/{atrun,getty} $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/libexec
-	cp -a $(BUILD_WORK)/system-cmds/{{arch,at,fs_usage,getconf,latency,login,lskq,lsmp,ltop,memory_pressure,newgrp,pagesize,passwd,trace,vm_stat,zprint}.tproj,wait4path}/*.1 $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man1
+	cp -a $(BUILD_WORK)/system-cmds/{{arch,at,fs_usage,getconf,latency,login,lskq,ltop,memory_pressure,newgrp,pagesize,passwd,trace,vm_stat,zprint}.tproj,wait4path}/*.1 $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man1
 	cp -a $(BUILD_WORK)/system-cmds/{getty,nologin,sysctl}.tproj/*.5 $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man5
 	cp -a $(BUILD_WORK)/system-cmds/{ac,accton,atrun,cpuctl,dmesg,dynamic_pager,getty,hostinfo,iostat,mkfile,nologin,nvram,purge,pwd_mkdb,reboot,sa,shutdown,sync,sysctl,taskpolicy,vifs,vipw,zdump,zic}.tproj/*.8 $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man8
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
+	cp -a $(BUILD_WORK)/system-cmds/lsmp $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin
+	cp -a $(BUILD_WORK)/system-cmds/lsmp/*.1 $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man1
+endif
+
 	$(LN_SR) $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/{arch,machine}
 	$(LN_S) $(MEMO_PREFIX)/sbin/reboot $(BUILD_STAGE)/system-cmds/$(MEMO_PREFIX)/sbin/halt
 ifneq ($(MEMO_SUB_PREFIX),) # compat links because we had faultily installed reboot and nologin to /usr/sbin even though they belong in /sbin
@@ -112,6 +124,7 @@ system-cmds-package: system-cmds-stage
 
 	# system-cmds.mk Sign
 	$(call SIGN,system-cmds,general.xml)
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 ifeq ($(shell [ $(CFVER_WHOLE) -lt 1800 ] && echo 1),1)
 	$(LDID) -S$(BUILD_MISC)/entitlements/lsmp-legacy.xml $(BUILD_DIST)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/lsmp
 else
@@ -122,6 +135,7 @@ endif
 	$(LDID) -S$(BUILD_MISC)/entitlements/fs_usage.plist $(BUILD_DIST)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/fs_usage
 	$(LDID) -S$(BUILD_MISC)/entitlements/login.plist $(BUILD_DIST)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/login
 	$(LDID) -S$(BUILD_MISC)/entitlements/passwd.plist $(BUILD_DIST)/system-cmds/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/passwd
+endif
 
 	find $(BUILD_DIST)/system-cmds -name '.ldid*' -type f -delete
 

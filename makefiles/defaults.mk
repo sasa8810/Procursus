@@ -31,7 +31,9 @@ defaults-package: defaults-stage
 	cp -a $(BUILD_STAGE)/defaults $(BUILD_DIST)
 
 	# defaults.mk Sign
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 	$(LDID) -S$(BUILD_WORK)/defaults/ent.plist $(BUILD_DIST)/defaults/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/defaults-procursus
+endif
 
 	# defaults.mk Make .debs
 	$(call PACK,defaults,DEB_DEFAULTS_V)

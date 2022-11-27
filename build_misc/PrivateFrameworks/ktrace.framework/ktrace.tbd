@@ -1,6 +1,6 @@
 --- !tapi-tbd
 tbd-version:     4
-targets:         [ armv7-ios, arm64-ios, arm64e-ios, arm64-tvos, arm64e-tvos, arm64_32-watchos, arm64-bridgeos ]
+targets:         [ armv7-ios, arm64-ios, arm64e-ios, arm64-tvos, arm64e-tvos, arm64_32-watchos, arm64-bridgeos, x86_64-ios-simulator, arm64-ios-simulator, x86_64-tvos-simulator, arm64-tvos-simulator, x86_64-watchos-simulator, arm64-watchos-simulator ]
 uuids:
   - target:          armv7-ios
     value:           06F6A919-703F-4846-9CC3-BBAA877B5553

@@ -64,10 +64,11 @@ sudo-package: sudo-stage
 	# sudo.mk Sign
 	$(call SIGN,sudo,general.xml)
 ifeq (,$(findstring darwin,$(MEMO_TARGET)))
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 	$(LDID) -S$(BUILD_MISC)/entitlements/pam.xml $(BUILD_DIST)/sudo/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/sudo
 	find $(BUILD_DIST)/sudo -name '.ldid*' -type f -delete
 endif
-
+endif
 	# sudo.mk Permissions
 	$(FAKEROOT) chmod u+s $(BUILD_DIST)/sudo/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/sudo
 

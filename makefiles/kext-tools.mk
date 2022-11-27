@@ -3,6 +3,7 @@ $(error Use the main Makefile)
 endif
 
 ifeq (,$(findstring darwin,$(MEMO_TARGET)))
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 
 SUBPROJECTS        += kext-tools
 KEXT_TOOLS_VERSION := 716
@@ -55,4 +56,5 @@ kext-tools-package: kext-tools-stage
 
 .PHONY: kext-tools kext-tools-package
 
+endif
 endif

@@ -329,7 +329,45 @@ GNU_PREFIX            := g
 ON_DEVICE_SDK_PATH    := /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 BARE_PLATFORM         := MacOSX
 MEMO_DEPLOYMENT       := MACOSX_DEPLOYMENT_TARGET=$(MACOSX_DEPLOYMENT_TARGET)
-
+# Simulators are always rootless
+else ifeq ($(MEMO_TARGET),iphonesimulator-amd64-rootless)
+ifneq ($(MEMO_QUIET),1)
+$(warning Building for iPhone Simulator amd64)
+endif # ($(MEMO_QUIET),1)
+MEMO_ARCH             := x86_64
+PLATFORM              := iphonesimulator
+DEB_ARCH              := iphonesimulator-amd64
+GNU_HOST_TRIPLE       := x86_64-apple-darwin
+RUST_TARGET           := $(GNU_HOST_TRIPLE)
+LLVM_TARGET           := x86_64-apple-iphonesimulator$(IPHONEOS_DEPLOYMENT_TARGET)
+PLATFORM_VERSION_MIN  := -miphonesimulator-version-min=$(IPHONEOS_DEPLOYMENT_TARGET)
+MEMO_PREFIX           ?= /opt/procursus-iphonesimulator
+MEMO_SUB_PREFIX       ?=
+MEMO_ALT_PREFIX       ?=
+MEMO_LAUNCHCTL_PREFIX ?=
+GNU_PREFIX            :=
+ON_DEVICE_SDK_PATH    := /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+BARE_PLATFORM         := iPhoneSimulator
+MEMO_DEPLOYMENT       := IPHONEOS_DEPLOYMENT_TARGET=$(IPHONEOS_DEPLOYMENT_TARGET)
+else ifeq ($(MEMO_TARGET),iphonesimulator-arm64-rootless)
+ifneq ($(MEMO_QUIET),1)
+$(warning Building for iPhone Simulator arm64)
+endif # ($(MEMO_QUIET),1)
+MEMO_ARCH             := arm64
+PLATFORM              := iphonesimulator
+DEB_ARCH              := iphonesimulator-arm64
+GNU_HOST_TRIPLE       := aarch64-apple-darwin
+RUST_TARGET           := $(GNU_HOST_TRIPLE)
+LLVM_TARGET           := arm64-apple-iphonesimulator$(IPHONEOS_DEPLOYMENT_TARGET)
+PLATFORM_VERSION_MIN  := -miphonesimulator-version-min=$(IPHONEOS_DEPLOYMENT_TARGET)
+MEMO_PREFIX           ?= /opt/procursus-iphonesimulator
+MEMO_SUB_PREFIX       ?=
+MEMO_ALT_PREFIX       ?=
+MEMO_LAUNCHCTL_PREFIX ?=
+GNU_PREFIX            :=
+ON_DEVICE_SDK_PATH    := /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+BARE_PLATFORM         := iPhoneSimulator
+MEMO_DEPLOYMENT       := IPHONEOS_DEPLOYMENT_TARGET=$(IPHONEOS_DEPLOYMENT_TARGET)
 else
 $(error Platform not supported)
 endif
@@ -743,7 +781,7 @@ DO_PATCH    = cd $(BUILD_PATCH)/$(1); \
 		fi; \
 	done
 
-ifeq (,$(findstring darwin,$(MEMO_TARGET)))
+ifneq ($(shell grep -qE 'darwin|simulator' <<< $(MEMO_TARGET) && echo 1),1)
 SIGN = 	for file in $$(find $(BUILD_DIST)/$(1) -type f -exec sh -c "file -ib '{}' | grep -q 'x-mach-binary; charset=binary'" \; -print); do \
 			if [ $${file\#\#*.} != "a" ]; then \
 				if [ $${file\#\#*.} = "dylib" ] || [ $${file\#\#*.} = "bundle" ] || [ $${file\#\#*.} = "so" ]; then \
@@ -1166,7 +1204,7 @@ bootstrap:: strapprojects
 		cp $(BUILD_STRAP)/strap/DEBIAN/md5sums $(BUILD_STRAP)/strap/$(MEMO_PREFIX)/Library/dpkg/info/$$PKGNAME.md5sums; \
 		dpkg-deb -c $$DEB | cut -f2- -d"." | awk -F'\\-\\>' '{print $$1}' | sed '1 s/$$/./' | sed 's/\/$$//' > $(BUILD_STRAP)/strap/$(MEMO_PREFIX)/Library/dpkg/info/$$PKGNAME.list; \
 		for script in preinst postinst extrainst_ prerm postrm conffiles triggers; do \
-			cp $(BUILD_STRAP)/strap/DEBIAN/$$script $(BUILD_STRAP)/strap/$(MEMO_PREFIX)/Library/dpkg/info/$$PKGNAME.$$script; \
+			cp -L $(BUILD_STRAP)/strap/DEBIAN/$$script $(BUILD_STRAP)/strap/$(MEMO_PREFIX)/Library/dpkg/info/$$PKGNAME.$$script; \
 		done; \
 		cat $(BUILD_STRAP)/strap/DEBIAN/control >> $(BUILD_STRAP)/strap/$(MEMO_PREFIX)/Library/dpkg/status; \
 		echo -e "Status: install ok installed\n" >> $(BUILD_STRAP)/strap/$(MEMO_PREFIX)/Library/dpkg/status; \
@@ -1222,6 +1260,7 @@ endif
 		BOOTSTRAP=bootstrap.tar.zst; \
 	fi; \
 	zstd -qf -c19 --rm $(BUILD_STRAP)/bootstrap.tar > $(BUILD_STRAP)/$${BOOTSTRAP}; \
+	rm -f $(BUILD_STRAP)/$${BOOTSTRAP}.asc
 	gpg --armor -u $(MEMO_PGP_SIGN_KEY) --detach-sign $(BUILD_STRAP)/$${BOOTSTRAP}; \
 	rm -rf $(BUILD_STRAP)/*/; \
 	echo "********** Successfully built bootstrap with **********"; \
@@ -1351,7 +1390,8 @@ setup:
 		https://github.com/apple-oss-distributions/xnu/raw/xnu-8792.81.2/bsd/bsm/audit_kevents.h)
 
 	@$(call DOWNLOAD_FILES,$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/IOKit/kext, \
-		https://github.com/apple-oss-distributions/IOKitUser/raw/IOKitUser-1955.100.5/kext.subproj/{KextManagerPriv$(comma)OSKext$(comma)OSKextPrivate$(comma)kextmanager_types$(comma){fat$(comma)macho$(comma)misc}_util}.h)
+		https://github.com/apple-oss-distributions/IOKitUser/raw/IOKitUser-2022.41.3/kext.subproj/{KextManagerPriv$(comma)OSKext$(comma)OSKextPrivate$(comma)kextmanager_types$(comma){fat$(comma)macho$(comma)misc}_util}.h \
+		https://github.com/apple-oss-distributions/IOKitUser/raw/IOKitUser-2022.41.3/kext.subproj/kextmanager_mig.defs)
 
 	@$(call DOWNLOAD_FILES,$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/Security, \
 		https://github.com/apple-oss-distributions/Security/raw/Security-60420.40.34.0.1/OSX/libsecurity_keychain/lib/SecKeychainPriv.h \

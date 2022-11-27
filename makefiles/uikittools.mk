@@ -60,6 +60,7 @@ uikittools-package: uikittools-stage
 	$(call SIGN,uikittools-extra,general.xml)
 
 ifeq (,$(findstring darwin,$(MEMO_TARGET)))
+ifeq (,$(findstring simulator,$(MEMO_TARGET)))
 	$(LDID) -S$(BUILD_WORK)/uikittools/lsrebuild.plist $(BUILD_DIST)/uikittools-extra/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/lsrebuild
 	$(LDID) -S$(BUILD_WORK)/uikittools/mgask.plist $(BUILD_DIST)/uikittools/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/mgask
 	$(LDID) -S$(BUILD_WORK)/uikittools/sbreload.plist $(BUILD_DIST)/uikittools/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/bin/sbreload
@@ -73,6 +74,7 @@ ifeq (,$(findstring darwin,$(MEMO_TARGET)))
 
 	find $(BUILD_DIST)/uikittools -name '.ldid*' -type f -delete
 	find $(BUILD_DIST)/uikittools-extra -name '.ldid*' -type f -delete
+endif
 endif
 
 	# uikittools.mk Make .debs
