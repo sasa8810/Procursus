@@ -71,7 +71,7 @@ system-cmds: system-cmds-setup libxcrypt openpam libiosexec ncurses
 			pwd_mkdb) CFLAGS="-D_PW_NAME_LEN=MAXLOGNAME -D_PW_YPTOKEN=\"__YP!\"";; \
 			passwd) CFLAGS="-DINFO_PAM=4" LDFLAGS="-lcrypt -lpam";; \
 			shutdown) LDFLAGS="-lbsm -liosexec";; \
-			sc_usage) LDFLAGS="-lncurses";; \
+			sc_usage) LDFLAGS="-lncurses -lutil";; \
 			at) LDFLAGS="-Iat.tproj -DPERM_PATH=\"$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/lib/cron\" -DDAEMON_UID=1 -DDAEMON_GID=1 -D__FreeBSD__ -DDEFAULT_AT_QUEUE='a' -DDEFAULT_BATCH_QUEUE='b'";; \
 			fs_usage) LDFLAGS="-Wno-error-implicit-function-declaration $(BUILD_MISC)/PrivateFrameworks/ktrace.framework/ktrace.tbd";; \
 			latency) LDFLAGS="-lncurses -lutil";; \

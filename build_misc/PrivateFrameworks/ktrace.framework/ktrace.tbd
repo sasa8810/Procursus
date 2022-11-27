@@ -20,7 +20,7 @@ uuids:
 install-name:    '/System/Library/PrivateFrameworks/ktrace.framework/ktrace'
 current-version: 453.100.11
 exports:
-  - targets:         [ armv7-ios, arm64-ios, arm64e-ios, arm64-tvos, arm64e-tvos, arm64_32-watchos, arm64-bridgeos ]
+  - targets:         [ armv7-ios, arm64-ios, arm64e-ios, arm64-tvos, arm64e-tvos, arm64_32-watchos, arm64-bridgeos, x86_64-ios-simulator, arm64-ios-simulator, x86_64-tvos-simulator, arm64-tvos-simulator, x86_64-watchos-simulator, arm64-watchos-simulator ]
     symbols:         [ _CFArrayApplierTrampoline, _CFDictionaryApplierTrampoline, 
                        _CFSetApplierTrampoline, __Z25ktrace_address_space_sortP20ktrace_address_space, 
                        __Z27ktrace_address_space_appendP20ktrace_address_space11SymbolOwner, 

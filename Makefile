@@ -1376,6 +1376,9 @@ setup:
 	@$(call DOWNLOAD_FILES,$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/arm, \
 		https://github.com/apple-oss-distributions/xnu/raw/xnu-8792.81.2/{bsd/arm/disklabel$(comma)osfmk/arm/cpu_capabilities}.h)
 
+	@$(call DOWNLOAD_FILES,$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/i386, \
+		https://github.com/apple-oss-distributions/xnu/raw/xnu-8792.41.9/{bsd/arm/disklabel$(comma)osfmk/i386/cpu_capabilities}.h)
+
 	@$(call DOWNLOAD_FILES,$(BUILD_BASE)$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/include/machine, \
 		https://github.com/apple-oss-distributions/xnu/raw/xnu-8792.81.2/bsd/machine/disklabel.h)
 
