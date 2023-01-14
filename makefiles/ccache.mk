@@ -23,6 +23,10 @@ endif
 ccache-setup: setup
 	$(call DOWNLOAD_FILES,$(BUILD_SOURCE),https://github.com/ccache/ccache/releases/download/v$(CCACHE_VERSION)/ccache-$(CCACHE_VERSION).tar.xz)
 	$(call EXTRACT_TAR,ccache-$(CCACHE_VERSION).tar.xz,ccache-$(CCACHE_VERSION),ccache)
+ifeq ($(shell [ "$(CFVER_WHOLE)" -lt 1600 ] && echo 1),1)
+	$(call DO_PATCH,ccache-1500,ccache,-p1)
+	sed -i -e 's/#include <filesystem>/#include <filesystem.hpp>/g' -e 's/std::filesystem/ghc::filesystem/g' $(BUILD_WORK)/ccache/src/Util.hpp
+endif
 
 ifneq ($(wildcard $(BUILD_WORK)/ccache/.build_complete),)
 ccache:

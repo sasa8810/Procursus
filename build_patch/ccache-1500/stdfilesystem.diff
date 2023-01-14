@@ -1,0 +1,18 @@
+diff -urN a/cmake/StdFilesystem.cmake b/cmake/StdFilesystem.cmake
+--- a/cmake/StdFilesystem.cmake	2022-11-22 02:53:32
++++ b/cmake/StdFilesystem.cmake	2023-01-14 19:44:33
+@@ -13,14 +13,3 @@
+   ]=])
+ 
+ check_cxx_source_compiles("${check_std_filesystem_source_code}" std_filesystem_without_libfs)
+-
+-if(NOT std_filesystem_without_libfs)
+-  set(CMAKE_REQUIRED_LIBRARIES stdc++fs)
+-  check_cxx_source_compiles("${check_std_filesystem_source_code}" std_filesystem_with_libfs)
+-  set(CMAKE_REQUIRED_LIBRARIES)
+-  if(NOT std_filesystem_with_libfs)
+-    message(FATAL_ERROR "Toolchain doesn't support std::filesystem with nor without -lstdc++fs")
+-  else()
+-    target_link_libraries(standard_settings INTERFACE stdc++fs)
+-  endif()
+-endif()
