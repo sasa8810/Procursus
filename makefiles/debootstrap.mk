@@ -17,7 +17,7 @@ debootstrap:
 	@echo "Using previously built debootstrap."
 else
 debootstrap: debootstrap-setup
-	+$(MAKE) -C $(BUILD_WORK)/debootstrap install \
+	+$(MAKE) -iC $(BUILD_WORK)/debootstrap install \
 		DESTDIR=$(BUILD_STAGE)/debootstrap
 	$(INSTALL) -Dm644 $(BUILD_WORK)/debootstrap/debootstrap.8 \
 		$(BUILD_STAGE)/debootstrap/$(MEMO_PREFIX)$(MEMO_SUB_PREFIX)/share/man/man8/debootstrap.8
