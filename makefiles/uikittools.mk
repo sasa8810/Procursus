@@ -17,6 +17,7 @@ endif
 uikittools-setup: setup
 	$(call GITHUB_ARCHIVE,ProcursusTeam,uikittools-ng,$(UIKITTOOLS_VERSION),v$(UIKITTOOLS_VERSION))
 	$(call EXTRACT_TAR,uikittools-ng-$(UIKITTOOLS_VERSION).tar.gz,uikittools-ng-$(UIKITTOOLS_VERSION),uikittools)
+	sed -i 's/armv7, armv7s, arm64, arm64e ]/armv7, armv7s, arm64, arm64e, x86_64 ]/g' $(BUILD_WORK)/uikittools/Frameworks/MobileContainerManager.framework//MobileContainerManager.tbd
 
 ifneq (,$(findstring darwin,$(MEMO_TARGET)))
 UIKITTOOLS_MAKE_ARGS += NO_COMPAT=1
