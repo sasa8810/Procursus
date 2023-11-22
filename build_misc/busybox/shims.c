@@ -1,14 +1,26 @@
 /* Code placed here will be injected into busybox */
 
-#ifndef HAVE_MEMRCHR
 #include <sys/types.h>
 #include <signal.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <stdint.h>
 
-char bb_common_bufsiz1_obj[1024];
+#define COMMON_BUFSIZE 6
+char bb_common_bufsiz1_obj[COMMON_BUFSIZE] __attribute__ ((__aligned__(sizeof(long long))));
 char* bb_common_bufsiz1 = (char*)&bb_common_bufsiz1_obj;
+struct lineedit_statics *lineedit_ptr_to_statics;
+struct globals_misc     *ash_ptr_to_globals_misc;
+struct globals_memstack *ash_ptr_to_globals_memstack;
+struct globals_var      *ash_ptr_to_globals_var;
+
+#ifdef errno
+int * bb_errno;
+#endif
+
+struct globals *ptr_to_globals;;
+
+#ifndef HAVE_MEMRCHR
 
 /*
  * Reverse memchr()
@@ -27,74 +39,6 @@ void* memrchr(const void *s, int c, size_t n)
     }
     return (void *)0;
 }
-
-int bb_errno = 0;
-
-
-#undef sigemptyset
-#undef sigfillset
-#undef sigaddset
-#undef sigdelset
-#undef sigismember
-
-int
-__sigemptyset(set)
-	sigset_t *set;
-{
-	*set = 0;
-	return (0);
-}
-
-int
-__sigfillset(set)
-	sigset_t *set;
-{
-	*set = ~(sigset_t)0;
-	return (0);
-}
-
-int
-__sigaddset(set, signo)
-	sigset_t *set;
-	int signo;
-{
-	if ((signo < 0 ) || (signo > NSIG)) {
-		errno = EINVAL;
-		return(-1);
-	}
-	if (signo == 0)
-		return(0);
-	*set |= sigmask(signo);
-	return (0);
-}
-
-int
-__sigdelset(set, signo)
-	sigset_t *set;
-	int signo;
-{
-	if ((signo < 0 ) || (signo > NSIG)) {
-		errno = EINVAL;
-		return(-1);
-	}
-	if (signo == 0)
-		return(0);
-	*set &= ~sigmask(signo);
-	return (0);
-}
-
-int
-__sigismember(set, signo)
-	const sigset_t *set;
-	int signo;
-{
-	if ((signo < 0 ) || (signo > NSIG)) {
-		errno = EINVAL;
-		return(-1);
-	}
-	if (signo == 0)
-		return(0);
-	return ((*set & sigmask(signo)) != 0);
-}
-
 #endif /* HAVE_MEMRCHR */
+
+

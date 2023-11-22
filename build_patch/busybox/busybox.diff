@@ -1,17 +1,6 @@
 diff -urN a/Makefile b/Makefile
 --- a/Makefile	2021-12-27 00:55:55.000000000 +0800
 +++ b/Makefile	2022-06-04 16:27:59.200494342 +0800
-@@ -1,8 +1,8 @@
- VERSION = 1
- PATCHLEVEL = 35
- SUBLEVEL = 0
--EXTRAVERSION =
--NAME = Unnamed
-+EXTRAVERSION = -frlower
-+NAME = For Real Flower
- 
- # *DOCUMENTATION*
- # To see a list of typical targets execute "make help"
 @@ -271,10 +271,10 @@
  # Look for make include files relative to root of kernel src
  MAKEFLAGS += --include-dir=$(srctree)
@@ -70,12 +59,12 @@ diff -urN a/Makefile.custom b/Makefile.custom
  .PHONY: stksizes
  stksizes: busybox_unstripped
 -	$(CROSS_COMPILE)objdump -d busybox_unstripped | $(srctree)/scripts/checkstack.pl $(ARCH) | uniq
-+	objdump -d busybox_unstripped | $(srctree)/scripts/checkstack.pl $(ARCH) | uniq
++	$(OBJDUMP) -d busybox_unstripped | $(srctree)/scripts/checkstack.pl $(ARCH) | uniq
  
  .PHONY: bigdata
  bigdata: busybox_unstripped
 -	$(CROSS_COMPILE)nm --size-sort busybox_unstripped | grep -vi ' [trw] '
-+	nm --size-sort busybox_unstripped | grep -vi ' [trw] '
++	$(NM) --size-sort busybox_unstripped | grep -vi ' [trw] '
  
  # Documentation Targets
  .PHONY: doc
@@ -103,20 +92,6 @@ diff -urN a/configs/android_defconfig b/configs/android_defconfig
  
  #
  # Debugging Options
-diff -urN a/configs/android_ndk_defconfig b/configs/android_ndk_defconfig
---- a/configs/android_ndk_defconfig	2021-12-27 00:53:20.000000000 +0800
-+++ b/configs/android_ndk_defconfig	2022-06-03 18:49:21.530613770 +0800
-@@ -64,8 +64,8 @@
- # CONFIG_LFS is not set
- CONFIG_CROSS_COMPILER_PREFIX="arm-linux-androideabi-"
- CONFIG_SYSROOT="/opt/android-ndk/platforms/android-9/arch-arm"
--CONFIG_EXTRA_CFLAGS="-DANDROID -D__ANDROID__ -DSK_RELEASE -nostdlib -march=armv7-a -msoft-float -mfloat-abi=softfp -mfpu=neon -mthumb -mthumb-interwork -fpic -fno-short-enums -fgcse-after-reload -frename-registers -fuse-ld=bfd"
--CONFIG_EXTRA_LDFLAGS="-Xlinker -z -Xlinker muldefs -nostdlib -Bdynamic -Xlinker -dynamic-linker -Xlinker /system/bin/linker -Xlinker -z -Xlinker nocopyreloc -Xlinker --no-undefined ${SYSROOT}/usr/lib/crtbegin_dynamic.o ${SYSROOT}/usr/lib/crtend_android.o"
-+CONFIG_EXTRA_CFLAGS="-DANDROID -D__ANDROID__ -DSK_RELEASE  -march=armv7-a -msoft-float -mfloat-abi=softfp -mfpu=neon -mthumb -mthumb-interwork -fpic -fno-short-enums -fgcse-after-reload -frename-registers -fuse-ld=bfd"
-+CONFIG_EXTRA_LDFLAGS="-Xlinker -z -Xlinker muldefs  -Bdynamic -Xlinker -dynamic-linker -Xlinker /system/bin/linker -Xlinker -z -Xlinker nocopyreloc -Xlinker --no-undefined ${SYSROOT}/usr/lib/crtbegin_dynamic.o ${SYSROOT}/usr/lib/crtend_android.o"
- CONFIG_EXTRA_LDLIBS="dl m c gcc"
- 
- #
 diff -urN a/coreutils/date.c b/coreutils/date.c
 --- a/coreutils/date.c	2021-12-27 00:53:20.000000000 +0800
 +++ b/coreutils/date.c	2022-06-03 18:49:21.532744166 +0800
@@ -212,18 +187,6 @@ diff -urN a/include/fix_u32.h b/include/fix_u32.h
 diff -urN a/include/libbb.h b/include/libbb.h
 --- a/include/libbb.h	2021-12-27 00:53:26.000000000 +0800
 +++ b/include/libbb.h	2022-06-03 18:49:21.551645703 +0800
-@@ -21,12 +21,12 @@
- #include <setjmp.h>
- #include <signal.h>
- #include <paths.h>
--#if defined __UCLIBC__ /* TODO: and glibc? */
-+//#if defined __UCLIBC__ /* TODO: and glibc? */
- /* use inlined versions of these: */
- # define sigfillset(s)    __sigfillset(s)
- # define sigemptyset(s)   __sigemptyset(s)
- # define sigisemptyset(s) __sigisemptyset(s)
--#endif
-+//#endif
  #include <stdint.h>
  #include <stdio.h>
  #include <stdlib.h>
@@ -253,15 +216,6 @@ diff -urN a/include/libbb.h b/include/libbb.h
  
  /* Busybox does not use threads, we can speed up stdio. */
  #ifdef HAVE_UNLOCKED_STDIO
-@@ -2281,7 +2282,7 @@
- /* '*const' ptr makes gcc optimize code much better.
-  * Magic prevents ptr_to_globals from going into rodata.
-  * If you want to assign a value, use SET_PTR_TO_GLOBALS(x) */
--extern struct globals *const ptr_to_globals;
-+struct globals *const ptr_to_globals;
- 
- #define barrier() asm volatile ("":::"memory")
- 
 diff -urN a/libbb/appletlib.c b/libbb/appletlib.c
 --- a/libbb/appletlib.c	2021-12-27 00:53:26.000000000 +0800
 +++ b/libbb/appletlib.c	2022-06-03 18:49:21.556414619 +0800
@@ -299,30 +253,6 @@ diff -urN a/libbb/common_bufsiz.c b/libbb/common_bufsiz.c
  void setup_common_bufsiz(void)
  {
  	if (!bb_common_bufsiz1)
-diff -urN a/libbb/lineedit.c b/libbb/lineedit.c
---- a/libbb/lineedit.c	2021-12-27 00:53:26.000000000 +0800
-+++ b/libbb/lineedit.c	2022-06-03 18:49:21.565574239 +0800
-@@ -189,7 +189,7 @@
- };
- 
- /* See lineedit_ptr_hack.c */
--extern struct lineedit_statics *BB_GLOBAL_CONST lineedit_ptr_to_statics;
-+struct lineedit_statics *BB_GLOBAL_CONST lineedit_ptr_to_statics;
- 
- #define S (*lineedit_ptr_to_statics)
- #define state            (S.state           )
-diff -urN a/libbb/llist.c b/libbb/llist.c
---- a/libbb/llist.c	2021-12-27 00:53:20.000000000 +0800
-+++ b/libbb/llist.c	2022-06-03 21:17:19.707257591 +0800
-@@ -40,7 +40,7 @@
- 	if (temp) {
- 		data = temp->data;
- 		*head = temp->link;
--		free(temp);
-+		/* free(temp);  Don't free it */
- 	}
- 	return data;
- }
 diff -urN a/libbb/signals.c b/libbb/signals.c
 --- a/libbb/signals.c	2021-12-27 00:53:21.000000000 +0800
 +++ b/libbb/signals.c	2022-06-03 18:49:21.569287905 +0800
@@ -448,33 +378,15 @@ diff -urN a/scripts/trylink b/scripts/trylink
      | grep -v "^#" \
      | grep -v "^ *$" \
      > applet_lst.tmp
-diff -urN a/shell/ash.c b/shell/ash.c
---- a/shell/ash.c	2021-12-27 00:53:26.000000000 +0800
-+++ b/shell/ash.c	2022-06-03 18:49:21.591585284 +0800
-@@ -474,7 +474,7 @@
- #endif
- 	pid_t backgndpid;        /* pid of last background process */
- };
--extern struct globals_misc *BB_GLOBAL_CONST ash_ptr_to_globals_misc;
-+struct globals_misc *BB_GLOBAL_CONST ash_ptr_to_globals_misc;
- #define G_misc (*ash_ptr_to_globals_misc)
- #define exitstatus        (G_misc.exitstatus )
- #define back_exitstatus   (G_misc.back_exitstatus )
-@@ -1574,7 +1574,7 @@
- 	size_t g_stacknleft; // = MINSIZE;
- 	struct stack_block stackbase;
- };
--extern struct globals_memstack *BB_GLOBAL_CONST ash_ptr_to_globals_memstack;
-+struct globals_memstack *BB_GLOBAL_CONST ash_ptr_to_globals_memstack;
- #define G_memstack (*ash_ptr_to_globals_memstack)
- #define g_stackp     (G_memstack.g_stackp    )
- #define g_stacknxt   (G_memstack.g_stacknxt  )
-@@ -2174,7 +2174,7 @@
- 	unsigned trap_depth;
- 	bool in_trap_ERR; /* ERR cannot recurse, no need to be a counter */
- };
--extern struct globals_var *BB_GLOBAL_CONST ash_ptr_to_globals_var;
-+struct globals_var *BB_GLOBAL_CONST ash_ptr_to_globals_var;
- #define G_var (*ash_ptr_to_globals_var)
- #define shellparam    (G_var.shellparam   )
- //#define redirlist     (G_var.redirlist    )
+diff -urN a/libbb/llist.c b/libbb/llist.c
+--- a/libbb/llist.c	2021-12-27 00:53:20.000000000 +0800
++++ b/libbb/llist.c	2022-06-03 21:17:19.707257591 +0800
+@@ -40,7 +40,7 @@
+ 	if (temp) {
+ 		data = temp->data;
+ 		*head = temp->link;
+-		free(temp);
++		/* free(temp);  Don't free it */
+ 	}
+ 	return data;
+ }
